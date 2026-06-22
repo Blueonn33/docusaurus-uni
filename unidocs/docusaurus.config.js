@@ -83,10 +83,10 @@ const config = {
         respectPrefersColorScheme: true,
       },
       navbar: {
-        title: 'My Site',
+        title: 'Документация',
         logo: {
-          alt: 'My Site Logo',
-          src: 'img/logo.svg',
+          alt: 'Документация лого',
+          src: 'img/indigo.svg',
         },
         items: [
           {
