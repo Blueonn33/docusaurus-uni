@@ -116,19 +116,23 @@ const config = {
             ],
           },
           {
-            title: 'Community',
+            title: 'Социални мрежи',
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+                label: 'Facebook',
+                href: 'https://www.facebook.com/martin.marinov.1717/',
               },
               {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
+                label: 'Instagram',
+                href: 'https://www.instagram.com/m.marinov33/',
               },
               {
-                label: 'X',
-                href: 'https://x.com/docusaurus',
+                label: 'LinkedIn',
+                href: 'https://www.linkedin.com/in/martin-marinov-3b65b6284/',
+              },
+              {
+                label: 'YouTube',
+                href: 'https://www.youtube.com/@Mansor_17',
               },
             ],
           },
