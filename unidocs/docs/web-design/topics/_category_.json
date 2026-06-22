@@ -1,0 +1,10 @@
+{
+  
+  "label": "Теми",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "title": "Списък с всички теми",
+    "description": "Бутоните служат за навигация."
+  }
+}
