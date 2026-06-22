@@ -8,7 +8,7 @@ const FeatureList = [
     Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        Документацията е написана на разбираем език. Картинките и примерите с код, помагат за по-лесното усвояване на материала.
+        Документацията е написана на разбираем език. Картинките и примерите с код помагат за по-лесното усвояване на материала.
       </>
     ),
   },
@@ -22,11 +22,11 @@ const FeatureList = [
     ),
   },
   {
-    title: 'Използване на React',
+    title: 'Надграждане',
     Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        Документацията редовно ще бъде обновявана чрез използване на React.
+        Документацията редовно ще бъде обновявана.
       </>
     ),
   },
