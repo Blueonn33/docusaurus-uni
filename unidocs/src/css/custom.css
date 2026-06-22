@@ -32,3 +32,11 @@
 .navbar, footer {
   background-color: #431264 !important;
 }
+
+.navbar__title, .navbar__item, .theme-layout-navbar-right{
+  color: white;
+}
+
+.navbar__title:hover, .navbar__item:hover, .theme-layout-navbar-right:hover {
+  color: #d9b3ff;
+}
