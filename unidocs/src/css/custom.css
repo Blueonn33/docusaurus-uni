@@ -37,6 +37,10 @@
   color: white;
 }
 
-.navbar__title:hover, .navbar__item:hover, .theme-layout-navbar-right:hover {
+.navbar__title:hover, 
+.navbar__item:hover, 
+.theme-layout-navbar-right:hover,
+.footer__link-item:hover {
   color: #d9b3ff;
 }
+
