@@ -91,6 +91,12 @@ const config = {
         items: [
           {
             type: 'docSidebar',
+            sidebarId: 'webDesignSidebar',
+            position: 'left',
+            label: 'Уеб дизайн',
+          },
+          {
+            type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
             position: 'left',
             label: 'Tutorial',
