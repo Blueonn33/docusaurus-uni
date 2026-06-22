@@ -133,15 +133,15 @@ const config = {
             ],
           },
           {
-            title: 'More',
+            title: 'Други',
             items: [
               {
-                label: 'Blog',
+                label: 'Статии',
                 to: '/blog',
               },
               {
                 label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                href: 'https://github.com/Blueonn33/docusaurus-uni',
               },
             ],
           },
