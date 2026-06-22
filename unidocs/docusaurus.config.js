@@ -146,7 +146,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Авторски права © ${new Date().getFullYear()} Мартин Маринов, Inc. Създадено с Docusaurus.`,
       },
       prism: {
         theme: prismThemes.github,
