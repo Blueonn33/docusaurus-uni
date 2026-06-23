@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
-export default function GroqChat() {
+export default function GroqChat({ groqKey }) {
+  const API_KEY = "Bearer " + window.API_KEY;
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
@@ -17,7 +18,8 @@ export default function GroqChat() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Bearer " + process.env.REACT_APP_GROQ_KEY
+          "Authorization": API_KEY
+          // "Authorization": "Bearer " + import.meta.env.VITE_GROQ_KEY
         },
         body: JSON.stringify({
           model: "openai/gpt-oss-120b",

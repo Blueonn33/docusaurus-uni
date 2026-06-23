@@ -5,6 +5,12 @@
 // See: https://docusaurus.io/docs/api/docusaurus-config
 
 import {themes as prismThemes} from 'prism-react-renderer';
+import fs from 'fs';
+import dotenv from 'dotenv';
+dotenv.config();
+
+const key = process.env.API_KEY || "placeholder_key";
+fs.writeFileSync('./static/env.js', `window.API_KEY="${key}";`);
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -39,6 +45,13 @@ const config = {
     defaultLocale: 'en',
     locales: ['en'],
   },
+
+  scripts: [
+    {
+      src: '/env.js',
+      async: false,
+    },
+  ],
 
   presets: [
     [
