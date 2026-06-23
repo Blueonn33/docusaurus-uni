@@ -1,11 +1,17 @@
 import React from 'react';
-import GroqChat from '../components/GroqChat';
+import BrowserOnly from '@docusaurus/BrowserOnly';
 
 export default function Root({ children }) {
   return (
     <>
       {children}
-      <GroqChat />
+
+      <BrowserOnly>
+        {() => {
+          const GroqChat = require('../components/GroqChat').default;
+          return <GroqChat />;
+        }}
+      </BrowserOnly>
     </>
   );
 }
