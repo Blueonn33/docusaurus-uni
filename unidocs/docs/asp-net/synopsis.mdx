@@ -1,0 +1,263 @@
+# Конспект
+
+Дисциплината включва основните неща за уеб разработката с .NET и изграждането на съвременни уеб приложения. Представят се основните концепции на платформата .NET, работата с ASP.NET Core, архитектурните принципи на MVC модела, както и подходите за работа с база данни, услуги, конфигурации и сигурност.
+
+---
+
+## **[1. Въведение]()**
+- ### **[Какво е .NET - CLR, runtime, SDK]()**
+- ### **[Какво е ASP.NET Core]()**
+- ### **[Архитектурни стилове - MVC, API, Razor Pages]()**
+- ### **[Структура на solution-а]()**
+- ### **[Уеб слой (Web layer)]()**
+- ### **[Приложен слой (Application layer)]()**
+- ### **[Инфраструктурен слой (Infrastructure layer)]()**
+- ### **[Домейн слой (Domain layer)]()**
+
+## **[2. Основи на ASP.NET Core]()**
+- ### **[Жизнен цикъл на заявката]()**
+- ### **[Middleware pipeline]()**
+- ### **[Dependency Injection]()**
+- ### **[Конфигурация и среди]()**
+- ### **[appsettings.json]()**
+- ### **[appsettings.Development.json]()**
+- ### **[secrets.json]()**
+
+## **[3. Архитектура на приложението]()**
+- ### **[secrets.json]()**
+- ### **[3.1. MVC]()**
+    - #### **[Controllers]()**
+    - #### **[Models]()**
+    - #### **[Views]()**
+    - #### **[ViewModels]()**
+    - #### **[Model Binding]()**
+    - #### **[Model Validation]()**
+- ### **[3.2. Clean Architecture / Layered Architecture]()**
+    - #### **[Model Binding]()**
+    - #### **[Application (Services)]()**
+    - #### **[Infrastructure (Repositories, EF Core)]()**
+    - #### **[Web (Controllers, Views)]()**
+- ### **[3.3. SOLID принципи]()**
+    - #### **[Single Responsibility]()**
+    - #### **[Dependency Inversion]()**
+    - #### **[Interface Segregation]()**
+
+## **[4. Domain слой]()**
+- ### **[Какво е Domain Model]()**
+- ### **[Entities]()**
+- ### **[Value Objects]()**
+- ### **[Enums]()**
+- ### **[Domain Events]()**
+
+## **[5. Entity Framework Core]()**
+- ### **[5.1. Основи]()**
+    - #### **[DbContext]()**
+    - #### **[DbSet]()**
+    - #### **[Миграции]()**
+    - #### **[Конфигурация на база данни]()**
+- ### **[5.2. Entity Configurations (Fluent API)]()**
+    - #### **[Property configurations]()**
+    - #### **[Keys]()**
+    - #### **[Relationships]()**
+    - #### **[Table mapping]()**
+    - #### **[Indexes]()**
+- ### **[5.3. Работа с данни]()**
+    - #### **[LINQ]()**
+    - #### **[Tracking vs NoTracking]()**
+    - #### **[Include / ThenInclude]()**
+    - #### **[Async операции]()**
+- ### **[5.4. Seed данни]()**
+    - #### **[ModelBuilder]()**
+    - #### **[Custom seeders]()**
+
+## **[6. Repository слой]()**
+- ### **[6.1. Основи]()**
+    - #### **[Защо Repository]()**
+    - #### **[Generic Repository]()**
+    - #### **[Specific Repositories]()**
+- ### **[6.2. Интерфейси]()**
+    - #### **[IRepository]()**
+    - #### **[IUnitOfWork]()**
+- ### **[6.3. Имплементации]()**
+    - #### **[EFRepository]()**
+    - #### **[Custom queries]()**
+
+## **[7. Service слой (Application Layer)]()**
+- ### **[7.1. Основи]()**
+    - #### **[Какво е Service]()**
+    - #### **[Бизнес логика]()**
+    - #### **[Интерфейси]()**
+- ### **[7.2. Типове услуги]()**
+    - #### **[Domain Services]()**
+    - #### **[Application Services]()**
+- ### **[7.3. Имплементации]()**
+    - #### **[Работа с Repositories]()**
+    - #### **[Валидации]()**
+    - #### **[DTOs]()**
+## **[8. Controllers]()**
+- ### **[8.1. Основи]()**
+    - #### **[Action методи]()**
+    - #### **[IActionResult]()**
+    - #### **[Routing]()**
+    - #### **[Attribute routing]()**
+    - #### **[Attribute routing]()**
+- ### **[8.2. Model Binding]()**
+    - #### **[FromBody]()**
+    - #### **[FromQuery]()**
+    - #### **[FromRoute]()**
+    - #### **[FromForm]()**
+- ### **[8.3. Model Validation]()**
+    - #### **[DataAnnotations]()**
+    - #### **[Custom validators]()**
+
+## **[9. ViewModels]()**
+- ### **[Защо ViewModels]()**
+- ### **[Mapping (AutoMapper)]()**
+- ### **[Input Models]()**
+- ### **[Output Models]()**
+- ### **[Form Models]()**
+
+## **[10. Views и Razor]()**
+- ### **[10.1. Razor синтаксис]()**
+    - #### **[\@model]()**
+    - #### **[\@foreach]()**
+    - #### **[\@if]()**
+- ### **[10.2. Layouts]()**
+    - #### **[_Layout.cshtml]()**
+    - #### **[Sections]()**
+- ### **[10.3. Partial Views]()**
+    - #### **[RenderPartial]()**
+    - #### **[RenderSection]()**
+- ### **[10.4. Tag Helpers]()**
+    - #### **[asp-for]()**
+    - #### **[asp-action]()**
+    - #### **[asp-controller]()**
+    - #### **[asp-validation-for]()**
+
+## **[11. ASP.NET Core Identity]()**
+- ### **[11.1. Основи]()**
+    - #### **[IdentityUser]()**
+    - #### **[IdentityRole]()**
+    - #### **[UserManager]()**
+    - #### **[SignInManager]()**
+- ### **[11.2. Функционалности]()**
+
+Регистрация
+
+Вход
+
+Изход
+
+Роли
+
+Авторизация
+
+11.3. Разширяване на Identity
+Custom User
+
+Custom Claims
+
+Custom Roles
+
+12. Security
+Authentication
+
+Authorization
+
+Policies
+
+Claims
+
+Roles
+
+CSRF защита
+
+XSS защита
+
+Password hashing
+
+13. Middleware
+Built-in middleware
+
+Custom middleware
+
+Error handling middleware
+
+Logging middleware
+
+14. Routing
+Conventional routing
+
+Attribute routing
+
+Route constraints
+
+15. Конфигурация
+IConfiguration
+
+Options pattern
+
+IOptions / IOptionsSnapshot
+
+Environment variables
+
+16. Logging
+ILogger
+
+Logging providers
+
+Serilog (по желание)
+
+17. Caching
+In-memory cache
+
+Distributed cache
+
+Response caching
+
+18. File Uploads
+IFormFile
+
+Streaming
+
+Validation
+
+19. Email изпращане
+SMTP
+
+MailKit
+
+Email templates
+
+20. Background Jobs
+Hosted Services
+
+IHostedService
+
+BackgroundService
+
+Hangfire (по желание)
+
+21. Testing
+21.1. Unit Tests
+xUnit
+
+Mocking (Moq)
+
+Тестове за services
+
+21.2. Integration Tests
+WebApplicationFactory
+
+In-memory DB
+
+22. Deployment
+Публикуване
+
+Kestrel
+
+IIS
+
+Linux + Nginx
+
+Production конфигурации
