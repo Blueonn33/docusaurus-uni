@@ -146,7 +146,11 @@ const config = {
             items: [
               {
                 label: 'Уеб дизайн',
-                to: '/docs/intro',
+                to: '/docs/web-design/intro',
+              },
+              {
+                label: '.NET',
+                to: '/docs/asp-net/intro',
               },
             ],
           },
