@@ -42,8 +42,8 @@ const config = {
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
+    defaultLocale: 'bg',
+    locales: ['bg'],
   },
 
   scripts: [
@@ -120,11 +120,17 @@ const config = {
           },
           {
             type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
+            sidebarId: 'aspNetSidebar',
             position: 'left',
-            label: 'Tutorial',
+            label: '.NET',
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
+          // {
+          //   type: 'docSidebar',
+          //   sidebarId: 'tutorialSidebar',
+          //   position: 'left',
+          //   label: 'Tutorial',
+          // },
+          // {to: '/blog', label: 'Blog', position: 'left'},
           // {
           //   href: 'https://github.com/Blueonn33/docusaurus-uni',
           //   label: 'GitHub',
