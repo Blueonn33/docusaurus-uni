@@ -45,7 +45,7 @@ Infrastructure -> Application -> Domain.
 
 <img src="/img/asp-net/infrastructure-structure.png" />
 
-### Правила за именуване на проекти
+### Правила за именуване
 
 #### Проекти
 
@@ -56,3 +56,117 @@ Infrastructure -> Application -> Domain.
 - **Множествено число за колекции** - Entities/, Services/, Handlers/.
 - **Единствено число за характеристики** - Orders/, Clients/ (всяка е отделна област с характеристики). Написани са в множествено число, но се използват като единствено число по значение.
 
+#### Файлове
+
+- **Suffix (наставка) с роля** - OrderService.cs, OrderRepository.cs, OrderController.cs.
+- **Командите/заявките получават пълни имена** - PlaceOrderCommand.cs, GetOrderByIdQuery.cs.
+
+#### Именуване и разположение на интерфейса
+
+```csharp
+// В Domain или Application
+public interface IOrderRepository
+{
+    Task<Order?> GetByIdAsync(OrderId id, CancellationToken ct);
+    Task AddAsync(Order order, CancellationToken ct);
+}
+
+// В Infrastructure (имплементация)
+public class OrderRepository : IOrderRepository
+{
+    // ..
+}
+```
+
+:::warning
+Интерфейсът се разполага до кода, който го използва, а не до кода, който го имплементира. Това е Dependency inversion (обръщане на зависимостите).
+:::
+
+### Референции към проекти и графика на зависимостите
+
+Ето настройката на .csproj, която налага правилото за зависимост:
+
+**Domain.csproj** - Не препраща към нищо.
+
+```csharp
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+</Project>
+```
+
+**Application.csproj** - Препратка само към Domain.
+
+```csharp
+<ItemGroup>
+  <ProjectReference Include="..\MyApp.Domain\MyApp.Domain.csproj" />
+</ItemGroup>
+```
+
+**Infrastructure.csproj** - Препратка към Application и Domain (незадължително).
+
+```csharp
+<ItemGroup>
+  <ProjectReference Include="..\MyApp.Application\MyApp.Application.csproj" />
+</ItemGroup>
+```
+
+**Api.csproj** - Препраща към всичко (това е коренът).
+
+```csharp
+<ItemGroup>
+  <ProjectReference Include="..\MyApp.Application\MyApp.Application.csproj" />
+  <ProjectReference Include="..\MyApp.Infrastructure\MyApp.Infrastructure.csproj" />
+</ItemGroup>
+```
+
+Проектът Api свързва всичко заедно в Program.cs:
+
+```csharp
+builder.Services
+    .AddApplication()      // От Application's DependencyInjection.cs
+    .AddInfrastructure();  // От Infrastructure's DependencyInjection.cs
+```
+
+### Често срещани архитектурни грешки
+
+1. Анти-шаблонът "Всичко е Service"
+
+```csharp
+public class OrderService
+{
+    public Order GetOrder(int id) { ... }
+    public void PlaceOrder(Order order) { ... }
+    public void CancelOrder(int id) { ... }
+    public void UpdateOrder(Order order) { ... }
+    public decimal CalculateTotal(Order order) { ... }
+    public bool ValidateOrder(Order order) { ... }
+    public void SendOrderEmail(Order order) { ... }
+    // още 17 метода
+}
+```
+
+Трябва да бъде разделен по случаи на употреба (use cases).
+
+2. Инфраструктурата като пълно чекмедже
+
+```
+Infrastructure/ 
+├── Database stuff 
+├── Email stuff 
+├── PDF generation 
+├── Image processing 
+├── Rate limiting 
+├── Background jobs 
+├── Feature flags 
+├── Analytics
+```
+
+Когато инфраструктурата стане твърде голяма, трябва да бъде разделена:
+
+```
+MyApp.Infrastructure.Persistence/ 
+MyApp.Infrastructure.Email/ 
+MyApp.Infrastructure.BackgroundJobs/
+```
