@@ -1,0 +1,8 @@
+{
+  "label": "2. Основи на ASP.NET Core",
+  "position": 2,
+  "link": {
+    "type": "doc",
+    "id": "intro"
+  }
+}
