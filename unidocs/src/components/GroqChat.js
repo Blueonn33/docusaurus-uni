@@ -258,7 +258,7 @@ export default function GroqChat({ groqKey }) {
                     background: "var(--ifm-color-emphasis-100)"
                   }}
                 >
-                  AI пише...
+                  Порцелан мисли 😶‍🌫️...
                 </div>
               </div>
             )}
