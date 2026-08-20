@@ -1,0 +1,108 @@
+# HTML
+
+Ще бъдат разгледани таблите, както и елементът iframe.
+
+---
+
+## Таблици
+
+Таблиците ни позволяват да подреждаме информацията в редове и колони.
+
+<img src="/img/web-design/table.png" />
+
+```HTML
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+       table, th, td {
+           border: 1px solid black;
+       }
+    </style>
+  </head>
+  <body>
+  <table style="width:100%">
+      <tr>
+        <th>Име</th>
+        <th>Възраст</th>
+        <th>Университет</th>
+      </tr>
+      <tr>
+        <td>Мартин</td>
+        <td>20</td>
+        <td>ВТУ</td>
+      </tr>
+      ...
+    </table>
+  </body>
+</html>
+```
+
+### Основни тагове
+
+- `<table>` - Дефинира таблица.
+- `<th>` - Дефинира заглавна стойност.
+- `<tr>` - Дефинира ред.
+- `<td>` - Дефинира стойност.
+- `<caption>` - Дефинира надпис на таблицата.
+- `<colgroup>` - Указва група от една или повече колони в таблица за форматиране.
+- `<col>` - Указва свойства за всяка колона в елемента `<colgroup>`.
+- `<thead>` - Групира заглавното съдържание.
+- `<tbody>` - Групира съдържанието на тялото.
+- `<tfoot>` - Групира съдържанието в долния колонтитул (footer).
+
+### Рамки
+
+По подразбиране таблиците се създават без рамки (borders). Използваме стилове за добавяне на рамки.
+
+```HTML
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    table {
+        background-color: #96D4D4;
+    }
+</style>
+```
+
+### Размери
+
+Редовете и колоните в таблиците могат да имат различни размери. Използваме атрибута style и в него задаваме стойности за височина (height) и ширина (width).
+
+```HTML
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    table {
+        background-color: #96D4D4;
+        width: 600px;
+        height: 200px;
+    }
+</style>
+```
+
+### Отстояния
+
+HTML таблиците могат да регулират отстоянието вътре в клетките (padding), както и пространството между тях.
+
+<img src="/img/web-design/table-space.png"/>
+
+---
+
+## IFrames
+
+Използваме `<iframe>`, за да вмъкваме уеб страници в други уеб страници.
+
+```HTML
+<iframe src="demo_iframe.html" name="iframe_a" title="Iframe Example">
+</iframe>
+   
+След това имаме линк, който отваря горния iframe
+<p>
+    <a href="https://www.w3schools.com" target="iframe_a">W3Schools.com</a>
+</p>
+```
