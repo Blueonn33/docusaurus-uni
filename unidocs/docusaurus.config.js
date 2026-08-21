@@ -179,10 +179,6 @@ const config = {
             title: 'Други',
             items: [
               {
-                label: 'Статии',
-                to: '/blog',
-              },
-              {
                 label: 'GitHub',
                 href: 'https://github.com/Blueonn33/docusaurus-uni',
               },

@@ -39,8 +39,12 @@ body {
   background-color: #431264 !important;
 }
 
-.navbar__title, .navbar__item, .theme-layout-navbar-right{
+.navbar__item, .theme-layout-navbar-right{
   color: white;
+}
+
+.navbar__title {
+  color: #d9b3ff;
 }
 
 .navbar__title:hover, 
