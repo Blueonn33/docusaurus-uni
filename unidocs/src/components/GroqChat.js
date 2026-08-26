@@ -6,6 +6,7 @@ export default function GroqChat({ groqKey }) {
   const API_KEY = "Bearer " + window.API_KEY;
 
   const [open, setOpen] = useState(false);
+  const [expanded, setExpanded] = useState(false);
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -15,10 +16,10 @@ export default function GroqChat({ groqKey }) {
 
     const userMessage = {
       role: "user",
-      content: input
+      content: input,
     };
 
-    setMessages(prev => [...prev, userMessage]);
+    setMessages((prev) => [...prev, userMessage]);
     setInput("");
     setLoading(true);
 
@@ -29,36 +30,36 @@ export default function GroqChat({ groqKey }) {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "Authorization": API_KEY
+            Authorization: API_KEY,
           },
           body: JSON.stringify({
             model: "openai/gpt-oss-120b",
-            messages: [...messages, userMessage]
-          })
+            messages: [...messages, userMessage],
+          }),
         }
       );
 
       const data = await response.json();
 
       if (data.error) {
-        setMessages(prev => [
+        setMessages((prev) => [
           ...prev,
           {
             role: "assistant",
-            content: `**Грешка:** ${data.error.message}`
-          }
+            content: `**Грешка:** ${data.error.message}`,
+          },
         ]);
 
         return;
       }
 
       if (!data.choices || !data.choices[0]) {
-        setMessages(prev => [
+        setMessages((prev) => [
           ...prev,
           {
             role: "assistant",
-            content: "**Невалиден отговор от Groq.**"
-          }
+            content: "**Невалиден отговор от Groq.**",
+          },
         ]);
 
         return;
@@ -66,18 +67,17 @@ export default function GroqChat({ groqKey }) {
 
       const botMessage = {
         role: "assistant",
-        content: data.choices[0].message.content
+        content: data.choices[0].message.content,
       };
 
-      setMessages(prev => [...prev, botMessage]);
-
+      setMessages((prev) => [...prev, botMessage]);
     } catch (err) {
-      setMessages(prev => [
+      setMessages((prev) => [
         ...prev,
         {
           role: "assistant",
-          content: "**Грешка при връзката с Groq.**"
-        }
+          content: "**Грешка при връзката с Groq.**",
+        },
       ]);
     } finally {
       setLoading(false);
@@ -111,7 +111,7 @@ export default function GroqChat({ groqKey }) {
           border: "none",
           cursor: "pointer",
           boxShadow: "0 4px 15px rgba(0,0,0,0.25)",
-          zIndex: 9999
+          zIndex: 9999,
         }}
       >
         <img
@@ -120,7 +120,7 @@ export default function GroqChat({ groqKey }) {
           style={{
             width: "38px",
             height: "38px",
-            objectFit: "contain"
+            objectFit: "contain",
           }}
         />
       </button>
@@ -130,23 +130,36 @@ export default function GroqChat({ groqKey }) {
         <div
           style={{
             position: "fixed",
-            bottom: "115px",
-            right: "25px",
 
-            width: "600px",
-            height: "700px",
+            top: expanded ? "0" : "auto",
+            left: expanded ? "0" : "auto",
+            right: expanded ? "0" : "25px",
+            bottom: expanded ? "0" : "115px",
 
-            maxWidth: "calc(100vw - 40px)",
-            maxHeight: "calc(100vh - 140px)",
+            width: expanded ? "100vw" : "600px",
+            height: expanded ? "100vh" : "700px",
+
+            maxWidth: expanded ? "100vw" : "calc(100vw - 40px)",
+            maxHeight: expanded ? "100vh" : "calc(100vh - 140px)",
 
             background: "white",
-            borderRadius: "16px",
-            boxShadow: "0 8px 35px rgba(0,0,0,0.3)",
+            borderRadius: expanded ? "0" : "16px",
+            boxShadow: expanded
+              ? "none"
+              : "0 8px 35px rgba(0,0,0,0.3)",
+
             display: "flex",
             flexDirection: "column",
             overflow: "hidden",
+
             zIndex: 9999,
-            border: "1px solid var(--ifm-color-emphasis-300)"
+
+            border: expanded
+              ? "none"
+              : "1px solid var(--ifm-color-emphasis-300)",
+
+            transition:
+              "width 0.25s ease, height 0.25s ease, right 0.25s ease, bottom 0.25s ease, border-radius 0.25s ease",
           }}
         >
           {/* Header */}
@@ -159,23 +172,68 @@ export default function GroqChat({ groqKey }) {
               fontSize: "18px",
               display: "flex",
               justifyContent: "space-between",
-              alignItems: "center"
+              alignItems: "center",
+              flexShrink: 0,
             }}
           >
             <span>✨ Порцелан AI</span>
 
-            <button
-              onClick={() => setOpen(false)}
+            <div
               style={{
-                background: "transparent",
-                border: "none",
-                color: "white",
-                fontSize: "24px",
-                cursor: "pointer"
+                display: "flex",
+                alignItems: "center",
+                gap: "5px",
               }}
             >
-              ×
-            </button>
+              {/* Бутон за разширяване */}
+              <button
+                onClick={() => setExpanded(!expanded)}
+                aria-label={expanded ? "Свий чата" : "Разшири чата"}
+                title={expanded ? "Свий чата" : "Разшири чата"}
+                style={{
+                  background: "transparent",
+                  border: "none",
+                  color: "white",
+                  fontSize: "24px",
+                  cursor: "pointer",
+                  width: "38px",
+                  height: "38px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  borderRadius: "8px",
+                  padding: 0,
+                }}
+              >
+                {expanded ? "↙" : "⛶"}
+              </button>
+
+              {/* Бутон за затваряне */}
+              <button
+                onClick={() => {
+                  setOpen(false);
+                  setExpanded(false);
+                }}
+                aria-label="Затвори чата"
+                title="Затвори"
+                style={{
+                  background: "transparent",
+                  border: "none",
+                  color: "white",
+                  fontSize: "26px",
+                  cursor: "pointer",
+                  width: "38px",
+                  height: "38px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  borderRadius: "8px",
+                  padding: 0,
+                }}
+              >
+                ×
+              </button>
+            </div>
           </div>
 
           {/* Messages */}
@@ -183,7 +241,8 @@ export default function GroqChat({ groqKey }) {
             style={{
               flex: 1,
               padding: "20px",
-              overflowY: "auto"
+              overflowY: "auto",
+              minHeight: 0,
             }}
           >
             {messages.length === 0 && (
@@ -191,7 +250,7 @@ export default function GroqChat({ groqKey }) {
                 style={{
                   textAlign: "center",
                   marginTop: "50px",
-                  color: "var(--ifm-color-emphasis-600)"
+                  color: "var(--ifm-color-emphasis-600)",
                 }}
               >
                 <h3>Здравей! Аз съм Порцелан 🐼</h3>
@@ -206,9 +265,7 @@ export default function GroqChat({ groqKey }) {
                   marginBottom: "18px",
                   display: "flex",
                   justifyContent:
-                    msg.role === "user"
-                      ? "flex-end"
-                      : "flex-start"
+                    msg.role === "user" ? "flex-end" : "flex-start",
                 }}
               >
                 <div
@@ -227,13 +284,11 @@ export default function GroqChat({ groqKey }) {
 
                     color: "var(--ifm-font-color-base)",
                     lineHeight: "1.6",
-                    wordBreak: "break-word"
+                    wordBreak: "break-word",
                   }}
                 >
                   {msg.role === "assistant" ? (
-                    <ReactMarkdown
-                      remarkPlugins={[remarkGfm]}
-                    >
+                    <ReactMarkdown remarkPlugins={[remarkGfm]}>
                       {msg.content}
                     </ReactMarkdown>
                   ) : (
@@ -248,14 +303,14 @@ export default function GroqChat({ groqKey }) {
                 style={{
                   display: "flex",
                   justifyContent: "flex-start",
-                  marginBottom: "15px"
+                  marginBottom: "15px",
                 }}
               >
                 <div
                   style={{
                     padding: "12px 16px",
                     borderRadius: "16px",
-                    background: "var(--ifm-color-emphasis-100)"
+                    background: "var(--ifm-color-emphasis-100)",
                   }}
                 >
                   Порцелан мисли 😶‍🌫️...
@@ -268,15 +323,15 @@ export default function GroqChat({ groqKey }) {
           <div
             style={{
               padding: "15px",
-              borderTop:
-                "1px solid var(--ifm-color-emphasis-300)",
+              borderTop: "1px solid var(--ifm-color-emphasis-300)",
               display: "flex",
-              gap: "10px"
+              gap: "10px",
+              flexShrink: 0,
             }}
           >
             <textarea
               value={input}
-              onChange={e => setInput(e.target.value)}
+              onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
               placeholder="Напиши съобщение..."
               disabled={loading}
@@ -293,7 +348,7 @@ export default function GroqChat({ groqKey }) {
                 outline: "none",
                 background:
                   "var(--ifm-background-surface-color)",
-                color: "var(--ifm-font-color-base)"
+                color: "var(--ifm-font-color-base)",
               }}
             />
 
@@ -310,12 +365,13 @@ export default function GroqChat({ groqKey }) {
                 border: "none",
                 borderRadius: "10px",
                 padding: "0 20px",
+
                 cursor:
                   loading || !input.trim()
                     ? "not-allowed"
                     : "pointer",
 
-                fontWeight: "bold"
+                fontWeight: "bold",
               }}
             >
               Изпрати

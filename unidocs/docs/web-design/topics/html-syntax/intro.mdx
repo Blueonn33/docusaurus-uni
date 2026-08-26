@@ -8,6 +8,182 @@ HTML използва **маркиране**, за да опише текст (�
 
 HTML елементът се отличава от останалия текст в документа чрез **тагове (tags)**, които се състоят от името на елемента, заобиколено от `<` и `>`. Името на елемент вътре в таг е без значение от главните и малките букви. Тоест, може да бъде написано с главни букви, малки букви или смесица от тях. Например, таг `<title>` може да бъде написан като `<Title>`, `<TITLE>` или по друг начин. Конвенцията и препоръчителната практика обаче е таговете да се пишат с малки букви. <sup>[[1]](https://developer.mozilla.org/en-US/docs/Web/HTML)</sup>
 
+:::info
+**Markup** - Това е начинът, по който описваме структурата и значението на съдържанието в една уеб страница чрез тагове.
+:::
+
+---
+
+## Тагове
+
+В HTML тагът се използва за създаване на елемент.
+
+Името на HTML елемент е името, което се появява в началото на началния таг на елемента и в края на крайния таг на елемента (ако елементът има краен таг). Например **p** в началния таг `<p>` и крайния таг `</p>` е името на елемента на HTML параграфа. Имайте предвид, че името на елемент в краен таг е предшествано от наклонена черта: `</p>` и че за невалидни елементи крайният таг не е нито задължителен, нито разрешен. <sup>[[2]](https://developer.mozilla.org/en-US/docs/Glossary/Tag)</sup>
+
+---
+
+## Елементи
+
+Елементът е част от уеб страница. В HTML един елемент може да съдържа елемент от данни или част от текст или изображение, или може би нищо. Типичен елемент включва отварящ таг с някои атрибути, затворено текстово съдържание и затварящ таг.
+
+<img
+  src="https://developer.mozilla.org/en-US/docs/Glossary/Element/anatomy-of-an-html-element.png"
+  alt="html element"
+  width={500}
+  style={{ border: "1px solid #461364" }}
+/>
+
+Нашият пълен елемент се състои от:
+
+- **Отварящият таг** - Състои се от името на елемента (в този пример p за абзац), обвит в отварящи и затварящи ъглови скоби. Този отварящ таг маркира къде елементът започва или започва да влиза в сила. В този пример той предшества началото на текста на абзаца.
+- **Атрибутът** - Намира се в отварящия таг и разширява елемента, като променя поведението му. Атрибутите съдържат допълнителна информация за елемента, която не е част от неговото съдържание. Атрибутът **class** предоставя идентифициращо име, което може да се използва за прилагана на стилове (CSS) към елемента или включване в скриптове (JavaScript).
+- **Съдържанието** - Това е съдържанието на елемента. В този пример това е текстът на абзаца.
+- **Затварящият таг** - Това е същото като отварящия таг, с изключение на това, че включва наклонена черта преди името на елемента. Това маркира къде завършва елементът. Невключването на затварящ таг е често срещана грешка за начинаещи, която може да доведе до странни резултати. <sup>[[3]](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Basic_HTML_syntax)</sup>
+
+Елементите и таговете не са едно и също нещо. Таговете започват или завършват елемент в кода, докато елементите са част от DOM (Document Object Model), модела на документа за показване на страницата в браузъра. <sup>[[4]](https://developer.mozilla.org/en-US/docs/Glossary/Element)</sup>
+
+В **[тази страница](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements)** са изброени всички HTML елементи, които са създадени с помощта на тагове. Те са групирани по функции, за да ви помогнат лесно да намерите това, което търсите.
+
+---
+
+## Атрибути
+
+Атрибутът разширява HTML елемент, променяйки поведението му или предоставяйки метаданни. <sup>[[5]](https://developer.mozilla.org/en-US/docs/Glossary/Attribute)</sup>
+
+Един атрибут винаги има формата **name="value"** (идентификатор на атрибута, последван от свързаната с него стойност). Може да видите атрибути без знак за равенство или стойност. Това е съкращение за предоставяне на празен низ в HTML.
+
+Редица HTML атрибути са булеви атрибути. Стойностите на тези атрибути се контролират само от присъствието или отсъствието на атрибута. Вижте повече информация за **[булевите атрибути тук](https://developer.mozilla.org/en-US/docs/Glossary/Boolean/HTML)**.
+
+Можете да прегледате този **[списък с атрибути](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes)**.
+
+---
+
+## Версии на HTML
+
+### Кратка история
+
+През 1990 г., като част от своята визия за мрежата, Тим Бърнърс-Лий дефинира концепцията за хипертекст, която той формализира през следващата година чрез маркиране, основно базирано на SGML. IETF започна официално да специфицира HTML през 1993 г. и след няколко чернови пусна версия 2.0 през 1995 г. През 1994 г. Бърнърс-Лий основава W3C за разработване на Web. През 1996 г. W3C пое работата по HTML и публикува препоръката за HTML 3.2 година по-късно. HTML 4.0 беше пуснат през 1999 г. и стана стандарт ISO през 2000 г.
+
+По това време W3C почти изостави HTML в полза на XHTML, което доведе до основаването на независима група, наречена WHATWG през 2004 г. Благодарение на WHATWG, работата по HTML продължи: двете организации пуснаха първата чернова на HTML5 през 2008 г. и официален стандарт през 2014 г. Терминът „HTML5“ е просто модна дума, отнасяща се до съвременните уеб технологии, които са част от HTML Living Standard.
+
+### Понятие и синтаксис
+
+HTML документ е обикновен текстов документ, структуриран с елементи. Елементите са заобиколени от съвпадащи отварящи и затварящи тагове. Всеки таг започва и завършва с ъглови скоби `(<>)`. Има няколко празни елемента, които не могат да ограждат никакъв текст, например `<img>`.
+
+Можете да разширите HTML таговете с атрибути, които предоставят допълнителна информация, засягаща начина, по който браузърът интерпретира елемента. HTML файлът обикновено се записва с разширение **.htm** или **.html**, обслужва се от уеб сървър и може да бъде показан от всеки уеб браузър. <sup>[[6]](https://developer.mozilla.org/en-US/docs/Glossary/HTML)</sup>
+
+---
+
+## Елементи според типа на потока (block и inline)
+
+### Block
+
+Съдържанието, което участва в блоковото оформление, се нарича **съдържание на ниво блок (block-level content)**.
+
+Блоков елемент винаги започва на нов ред. В хоризонтални режими на писане той заема цялото хоризонтално пространство на своя родителски елемент (контейнер) и вертикално пространство, равно на височината на неговото съдържание, като по този начин създава **блок**.
+
+#### Тагове
+
+```html
+<address>   <article>   <aside> <blockquote>    <canvas>    <dd>    <div>   <dl>    <dt>    <fieldset>  <figcaption>    <figure>    <footer>    <form>  <h1>-<h6>   <header>    <hr>    <li>    <main>  <nav>   <noscript>  <ol>    <p> <pre>   <section>   <table> <tfoot> <ul>    <video>
+```
+
+#### Пример
+
+```html
+<div>
+        <p>This the first paragraph.</p>
+        <p>This is the second paragraph.</p>
+</div>
+```
+
+Виж **[целия пример](https://developer.mozilla.org/en-US/docs/Glossary/Block-level_content#examples)**.
+
+---
+
+### Inline
+
+Съдържанието, което участва във вграденото оформление, се нарича **съдържание на вградено ниво (inline-level content)**. 
+
+При вграденото оформление, елементите се оформят чрез фрагментирането им в купчина редови полета. В рамките на всяко редово поле полетата на вградено ниво са подравнени едно към друго вертикално или хоризонтално, в зависимост от режима на писане. Обикновено те са подравнени по основните линии на техния текст. Това може да се промени с CSS.
+
+#### Тагове
+
+```html
+<a> <abbr>  <acronym>   <b> <bdo>   <big>   <br>    <button>    <cite>  <code>  <dfn>   <em>    <i> <img>   <input> <kbd>   <label> <map>   <object>    <output>    <q> <samp>  <script>    <select>    <small> <span>  <strong>    <sub>   <sup>   <textarea>  <time>  <tt>    <var>
+```
+
+#### Пример
+
+```html
+<p>
+  This span is an <span class="highlight">inline-level element</span>; its
+  background has been colored to display both the beginning and end of the
+  element's influence. Input elements, like <input type="radio" /> and
+  <input type="checkbox" />, are also inline-level content.
+</p>
+```
+
+Виж **[целия пример](https://developer.mozilla.org/en-US/docs/Glossary/Inline-level_content#examples)**.
+
+### Разлика между block и inline
+
+В HTML и CSS елементите се класифицират или като **вградени елементи (inline)**, или като **блокови елементи (block)** и тази класификация диктува как се държат в оформлението на документа. <sup>[[7]](https://www.freecodecamp.org/learn/responsive-web-design-v9/lecture-what-is-css/what-is-the-difference-between-inline-and-block-level-elements-in-css)</sup>
+
+Разбирането на тази разлика е от решаващо значение за контролиране на това как вашето съдържание се показва на уеб страница.
+
+Елементите на ниво блок са елементи, които заемат цялата налична за тях ширина по подразбиране, простирайки се по ширината на техния контейнер. Тези елементи винаги започват на нов ред и изтласкват друго съдържание към следващия ред, създавайки **блок** от съдържание.
+
+Елементите на ниво блок имат CSS свойството `display: block;`, което се прилага по подразбиране. Това свойство гарантира, че елементът се разтяга, за да запълни ширината на контейнера и се появява на нов ред.
+
+Някои общи елементи на ниво блок са контейнер (div), абзаци (p), заглавия (h1-h6), подредени списъци (ol), неподредени списъци (ul) и елементи на секции (section).
+
+#### Пример
+
+```html
+<p style="border: 2px solid red;">First paragraph</p>
+<p>Second paragraph</p>
+```
+
+Вградените елементи, за разлика от елементите на ниво блок, заемат толкова ширина, колкото им е необходима, и не започват на нов ред. Тези елементи се вливат в съдържанието, позволявайки на текст и други вградени елементи да се показват до тях.
+
+Вградените елементи имат CSS свойството `display: inline;`, което се прилага по подразбиране. Това свойство гарантира, че елементът остава в потока на съдържанието и не прекъсва на нов ред.
+
+Често срещани вградени елементи са контейнер (span), хипервръзка (a) и снимка (img).
+
+#### Пример
+```html
+<p>
+    This is a <span style="color: red; border: 2px solid green;">red</span> word inside a paragraph.
+</p>
+```
+
+<img
+  src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.geeksforgeeks.org%2Fwp-content%2Fuploads%2F20250510120821149469%2Finline.webp&f=1&nofb=1&ipt=dd92f5b540d8260e4854be6b949715648bd0bb4e169f11afb986ce15c27c12fa"
+  alt="block and inline elements"
+  width={500}
+  style={{ border: "1px solid #461364" }}
+/>
+
+## Валидиране
+
+Налични са валидатори, които проверяват дали HTML документите са коректни. Валидирането идентифицира грешки във вашия HTML документ и дава предупреждения при налични грешки. Това ви помага да се уверите, че документът отговаря на уеб стандартите. Някои валидатори предлагат и форматиране на код, за да изглежда по-добре. Ето няколко валидатора:
+
+- **[W3C Validator](https://validator.w3.org/#validate_by_input)**.
+- **[Codeshack.io](https://codeshack.io/html-validator/)**.
+- **[TidyCode](https://tidycode.org/validate/html)**.
+
 ## Използвана литература
 
-- [MDN Web Docs - HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
+- **[MDN Web Docs - HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)**
+- **[MDN Web Docs - Tag](https://developer.mozilla.org/en-US/docs/Glossary/Tag)**
+- **[MDN Web Docs - HTML Syntax](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Basic_HTML_syntax)**
+- **[MDN Web Docs - Element](https://developer.mozilla.org/en-US/docs/Glossary/Element)**
+- **[MDN Web Docs - Elements](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements)**
+- **[MDN Web Docs - Attribute](https://developer.mozilla.org/en-US/docs/Glossary/Attribute)**
+- **[MDN Web Docs - Boolean](https://developer.mozilla.org/en-US/docs/Glossary/Boolean/HTML)**
+- **[MDN Web Docs - Attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes)**
+- **[MDN Web Docs - HTML](https://developer.mozilla.org/en-US/docs/Glossary/HTML)**
+- **[MDN Web Docs - Block-level content](https://developer.mozilla.org/en-US/docs/Glossary/Block-level_content#examples)**
+- **[MDN Web Docs - Inline-level content](https://developer.mozilla.org/en-US/docs/Glossary/Inline-level_content#examples)**
+- **[FreeCodeCamp - Block-level and Inline-level content](https://www.freecodecamp.org/learn/responsive-web-design-v9/lecture-what-is-css/what-is-the-difference-between-inline-and-block-level-elements-in-css)**
