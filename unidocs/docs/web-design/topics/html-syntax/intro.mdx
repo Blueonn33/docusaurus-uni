@@ -1,3 +1,6 @@
+import HtmlPlayground from '@site/src/components/HtmlPlayground';
+import CodeBlock from '@theme/CodeBlock';
+
 # HTML синтаксис
 
 **HTML - HyperText Markup Language (език за маркиране на хипертекст)** е най-основният градивен елемент на мрежата. Той определя значението и структурата на уеб съдържанието. Други технологии освен HTML обикновено се използват за задаване на външния вид/представянето **(CSS)** или функционалността/поведението **(JavaScript)** на уеб страницата.
@@ -88,14 +91,16 @@ HTML документ е обикновен текстов документ, с�
 <address>   <article>   <aside> <blockquote>    <canvas>    <dd>    <div>   <dl>    <dt>    <fieldset>  <figcaption>    <figure>    <footer>    <form>  <h1>-<h6>   <header>    <hr>    <li>    <main>  <nav>   <noscript>  <ol>    <p> <pre>   <section>   <table> <tfoot> <ul>    <video>
 ```
 
-#### Пример
+---
 
-```html
+### Пример
+
+<HtmlPlayground code={`
 <div>
-        <p>This the first paragraph.</p>
-        <p>This is the second paragraph.</p>
+    <p>This the first paragraph.</p>
+    <p>This is the second paragraph.</p>
 </div>
-```
+`} />
 
 Виж **[целия пример](https://developer.mozilla.org/en-US/docs/Glossary/Block-level_content#examples)**.
 
@@ -113,18 +118,22 @@ HTML документ е обикновен текстов документ, с�
 <a> <abbr>  <acronym>   <b> <bdo>   <big>   <br>    <button>    <cite>  <code>  <dfn>   <em>    <i> <img>   <input> <kbd>   <label> <map>   <object>    <output>    <q> <samp>  <script>    <select>    <small> <span>  <strong>    <sub>   <sup>   <textarea>  <time>  <tt>    <var>
 ```
 
-#### Пример
+---
 
-```html
+### Пример
+
+<HtmlPlayground code= {`
 <p>
   This span is an <span class="highlight">inline-level element</span>; its
   background has been colored to display both the beginning and end of the
   element's influence. Input elements, like <input type="radio" /> and
   <input type="checkbox" />, are also inline-level content.
 </p>
-```
+`} />
 
 Виж **[целия пример](https://developer.mozilla.org/en-US/docs/Glossary/Inline-level_content#examples)**.
+
+---
 
 ### Разлика между block и inline
 
@@ -138,12 +147,16 @@ HTML документ е обикновен текстов документ, с�
 
 Някои общи елементи на ниво блок са контейнер (div), абзаци (p), заглавия (h1-h6), подредени списъци (ol), неподредени списъци (ul) и елементи на секции (section).
 
-#### Пример
+---
 
-```html
+### Пример
+
+<HtmlPlayground code={`
 <p style="border: 2px solid red;">First paragraph</p>
 <p>Second paragraph</p>
-```
+`}/>
+
+---
 
 Вградените елементи, за разлика от елементите на ниво блок, заемат толкова ширина, колкото им е необходима, и не започват на нов ред. Тези елементи се вливат в съдържанието, позволявайки на текст и други вградени елементи да се показват до тях.
 
@@ -151,12 +164,17 @@ HTML документ е обикновен текстов документ, с�
 
 Често срещани вградени елементи са контейнер (span), хипервръзка (a) и снимка (img).
 
-#### Пример
-```html
+---
+
+### Пример
+
+<HtmlPlayground code={`
 <p>
     This is a <span style="color: red; border: 2px solid green;">red</span> word inside a paragraph.
 </p>
-```
+`} />
+
+---
 
 <img
   src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.geeksforgeeks.org%2Fwp-content%2Fuploads%2F20250510120821149469%2Finline.webp&f=1&nofb=1&ipt=dd92f5b540d8260e4854be6b949715648bd0bb4e169f11afb986ce15c27c12fa"
@@ -165,6 +183,8 @@ HTML документ е обикновен текстов документ, с�
   style={{ border: "1px solid #461364" }}
 />
 
+---
+
 ## Валидиране
 
 Налични са валидатори, които проверяват дали HTML документите са коректни. Валидирането идентифицира грешки във вашия HTML документ и дава предупреждения при налични грешки. Това ви помага да се уверите, че документът отговаря на уеб стандартите. Някои валидатори предлагат и форматиране на код, за да изглежда по-добре. Ето няколко валидатора:
@@ -172,6 +192,8 @@ HTML документ е обикновен текстов документ, с�
 - **[W3C Validator](https://validator.w3.org/#validate_by_input)**.
 - **[Codeshack.io](https://codeshack.io/html-validator/)**.
 - **[TidyCode](https://tidycode.org/validate/html)**.
+
+---
 
 ## Използвана литература
 
