@@ -16,7 +16,7 @@ import HtmlPlayground from '@site/src/components/HtmlPlayground';
 Като цяло, трябва да има само един `<h1>` на страница и той служи като заглавие на страницата. Но никой не може да ви спре да сложите 10 `<h1>` заглавия на страница 🙃.
 :::
 
-### Пример
+---
 
 <HtmlPlayground code={`
 <h1>Level 1 Heading</h1>
@@ -26,3 +26,19 @@ import HtmlPlayground from '@site/src/components/HtmlPlayground';
 <h5>Level 5 Heading</h5>
 <h6>Level 6 Heading</h6>
 `} />
+
+---
+
+Важно е да запомните, че въпреки че заглавията имат стилове по подразбиране, те не трябва да се избират въз основа на външния вид. (Това е задачата на CSS.) Вместо това, те обозначават нивото на важност на текста като заглавие или подзаглавие.
+
+---
+
+## Абзац и малък текст
+
+### Абзац/параграф
+
+Абзаците се използват за блокове от текст (точно както в писането). Абзаците са **блокови елементи** по подразбиране.
+
+<HtmlPlayground code = {`
+<p>Far out in the uncharted backwaters of the unfashionable end of the western spiral arm of the Galaxy lies a small unregarded yellow sun.</p>
+`}/>

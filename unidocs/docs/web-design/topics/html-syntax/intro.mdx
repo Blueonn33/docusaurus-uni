@@ -93,8 +93,6 @@ HTML документ е обикновен текстов документ, с�
 
 ---
 
-### Пример
-
 <HtmlPlayground code={`
 <div>
     <p>This the first paragraph.</p>
@@ -120,9 +118,12 @@ HTML документ е обикновен текстов документ, с�
 
 ---
 
-### Пример
-
 <HtmlPlayground code= {`
+<style>
+.highlight {
+  background-color: yellow;
+}
+</style>
 <p>
   This span is an <span class="highlight">inline-level element</span>; its
   background has been colored to display both the beginning and end of the
@@ -149,8 +150,6 @@ HTML документ е обикновен текстов документ, с�
 
 ---
 
-### Пример
-
 <HtmlPlayground code={`
 <p style="border: 2px solid red;">First paragraph</p>
 <p>Second paragraph</p>
@@ -165,8 +164,6 @@ HTML документ е обикновен текстов документ, с�
 Често срещани вградени елементи са контейнер (span), хипервръзка (a) и снимка (img).
 
 ---
-
-### Пример
 
 <HtmlPlayground code={`
 <p>
