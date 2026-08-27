@@ -36,7 +36,7 @@ export default function GroqChat({ groqKey }) {
             model: "openai/gpt-oss-120b",
             messages: [...messages, userMessage],
           }),
-        }
+        },
       );
 
       const data = await response.json();
@@ -144,9 +144,7 @@ export default function GroqChat({ groqKey }) {
 
             background: "white",
             borderRadius: expanded ? "0" : "16px",
-            boxShadow: expanded
-              ? "none"
-              : "0 8px 35px rgba(0,0,0,0.3)",
+            boxShadow: expanded ? "none" : "0 8px 35px rgba(0,0,0,0.3)",
 
             display: "flex",
             flexDirection: "column",
@@ -282,7 +280,10 @@ export default function GroqChat({ groqKey }) {
                         ? "#ede9fe"
                         : "var(--ifm-color-emphasis-100)",
 
-                    color: "var(--ifm-font-color-base)",
+                    color:
+                      msg.role === "user"
+                        ? "#000000"
+                        : "var(--ifm-font-color-base)",
                     lineHeight: "1.6",
                     wordBreak: "break-word",
                   }}
@@ -341,13 +342,11 @@ export default function GroqChat({ groqKey }) {
                 resize: "none",
                 padding: "12px",
                 borderRadius: "10px",
-                border:
-                  "1px solid var(--ifm-color-emphasis-400)",
+                border: "1px solid var(--ifm-color-emphasis-400)",
                 fontFamily: "inherit",
                 fontSize: "15px",
                 outline: "none",
-                background:
-                  "var(--ifm-background-surface-color)",
+                background: "var(--ifm-background-surface-color)",
                 color: "var(--ifm-font-color-base)",
               }}
             />
@@ -356,20 +355,14 @@ export default function GroqChat({ groqKey }) {
               onClick={sendMessage}
               disabled={loading || !input.trim()}
               style={{
-                background:
-                  loading || !input.trim()
-                    ? "#a78bfa"
-                    : "#6d28d9",
+                background: loading || !input.trim() ? "#a78bfa" : "#6d28d9",
 
                 color: "white",
                 border: "none",
                 borderRadius: "10px",
                 padding: "0 20px",
 
-                cursor:
-                  loading || !input.trim()
-                    ? "not-allowed"
-                    : "pointer",
+                cursor: loading || !input.trim() ? "not-allowed" : "pointer",
 
                 fontWeight: "bold",
               }}

@@ -179,6 +179,10 @@ const config = {
             title: 'Други',
             items: [
               {
+                label: 'Личен Сайт',
+                href: 'https://blueonn33.github.io/martinmarinov/',
+              },
+              {
                 label: 'GitHub',
                 href: 'https://github.com/Blueonn33/docusaurus-uni',
               },
@@ -208,10 +212,10 @@ const config = {
         externalUrlRegex: 'external\\.com|domain\\.com',
 
         // Optional: Replace parts of the item URLs from Algolia. Useful when using the same search index for multiple deployments using a different baseUrl. You can use regexp or string in the `from` param. For example: localhost:3000 vs myCompany.com/docs
-        replaceSearchResultPathname: {
-          from: '/docs/', // or as RegExp: /\/docs\//
-          to: '/',
-        },
+        // replaceSearchResultPathname: {
+        //   from: '/docs/', // or as RegExp: /\/docs\//
+        //   to: '/',
+        // },
 
         // Optional: Algolia search parameters
         searchParameters: {},
