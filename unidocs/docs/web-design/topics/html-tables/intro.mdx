@@ -58,6 +58,8 @@ HTML таблиците трябва да се използват за табл�
 
 За да спрем нарастването на този ред и да започнем да поставяме следващите клетки на втори ред, трябва да използваме елемента `<tr>` (table row). Поставяме 4-те клетки в `<tr>` тага.
 
+---
+
 <HtmlPlayground code = {`
 <table>
     <tr>
@@ -69,7 +71,11 @@ HTML таблиците трябва да се използват за табл�
 </table>
 `} />
 
+---
+
 По този начин се създава един ред. Всеки следващ ред трябва да бъде обвит в допълнителен `<tr>` елемент, като всяка клетка се съдържа в `<td>`.
+
+---
 
 <HtmlPlayground code = {`
 <table>
@@ -88,9 +94,13 @@ HTML таблиците трябва да се използват за табл�
 </table>
 `} />
 
+---
+
 ### Добавяне на заглавни клетки
 
 Нека обърнем внимание на заглавните клетки на таблиците – специални клетки, които се поставят в началото на ред или колона и определят типа данни, които този ред или колона съдържа (като пример вижте клетките **Име** и **Възраст** в първия показан пример). За да илюстрираме защо са полезни, разгледайте следния пример за таблица. Първо, изходният код:
+
+---
 
 <HtmlPlayground code = {`
 <table>
@@ -118,9 +128,13 @@ HTML таблиците трябва да се използват за табл�
 </table>
 `} />
 
+---
+
 Проблемът тук е, че макар донякъде да можете да разберете какво се случва, не е толкова лесно да се правят кръстосани препратки към данните, колкото би могло да бъде. Ако заглавните клетки на колоните и редовете се открояваха по някакъв начин, щеше да е много по-добре. 
 
 За да разпознаете заглавни клетки на таблицата както визуално, така и семантично, можете да използвате елемента `<th>` (table header). Това работи по абсолютно същия начин като `<td>`, с изключение на това, че обозначава заглавна клетка, а не обикновена клетка. Отворете HTML кода си и променете всички елементи `<td>` около заглавията на таблицата на `<th>` елементи.
+
+---
 
 <HtmlPlayground code = {`
 <table>
@@ -148,6 +162,8 @@ HTML таблиците трябва да се използват за табл�
 </table>
 `} />
 
+---
+
 ### Защо заглавните клетки са полезни?
 
 Вече частично отговорихме на този въпрос – по-лесно е да намерите данните, които търсите, когато заглавните клетки ясно се открояват, а дизайнът като цяло изглежда по-добре.
@@ -160,3 +176,226 @@ HTML таблиците трябва да се използват за табл�
 
 ### Разрешаване на клетките да обхващат множество редове и колони
 
+Понякога искаме клетките да обхващат няколко реда или колони. Да вземем следния прост пример, който показва имената на често срещани животни. В някои случаи искаме да покажем имената на мъжките и женските животни до името на животното. Понякога не го правим и в такива случаи просто искаме името на животното да обхваща цялата таблица.
+
+---
+
+<HtmlPlayground code = {`
+<table>
+  <tr>
+    <th>Animals</th>
+  </tr>
+  <tr>
+    <th>Hippopotamus</th>
+  </tr>
+  <tr>
+    <th>Horse</th>
+    <td>Mare</td>
+  </tr>
+  <tr>
+    <td>Stallion</td>
+  </tr>
+  <tr>
+    <th>Crocodile</th>
+  </tr>
+  <tr>
+    <th>Chicken</th>
+    <td>Hen</td>
+  </tr>
+  <tr>
+    <td>Rooster</td>
+  </tr>
+</table>
+`}/>
+
+---
+
+#### Коригиране на оформлението с rowspan и colspan
+
+Нужен ни е начин **Animals**, **Hippopotamus** и **Crocodile** да се разпростират в две колони, а **Horse** и **Chicken** – надолу в два реда. За щастие, заглавните клетки и клетките на таблиците имат атрибутите **colspan** и **rowspan**, които ни позволяват да правим точно тези неща. И двете приемат числова стойност без единици, която е равна на броя редове или колони, които искате да се разпрострат. Например, `colspan="2"` прави клетката да се разпростира в две колони.
+
+---
+
+<HtmlPlayground code = {`
+<table>
+  <tr>
+    <th colspan="2">Animals</th>
+  </tr>
+  <tr>
+    <th colspan="2">Hippopotamus</th>
+  </tr>
+  <tr>
+    <th rowspan="2">Horse</th>
+    <td>Mare</td>
+  </tr>
+  <tr>
+    <td>Stallion</td>
+  </tr>
+  <tr>
+    <th colspan="2">Crocodile</th>
+  </tr>
+  <tr>
+    <th rowspan="2">Chicken</th>
+    <td>Hen</td>
+  </tr>
+  <tr>
+    <td>Rooster</td>
+  </tr>
+</table>
+`}/>
+
+---
+
+### Групиране на колони с `<colgroup>` и `<col>`
+
+Има начин да се насочат цели колони на таблица като едно цяло, например при прилагане на стилове към таблица. С натрупването на повече опит със създаването на HTML таблици ще откриете, че прилагането на цвят на фона, например, към всяка клетка в една колона е по-трудно, отколкото си мислите. Елементите `<colgroup>` и `<col>` предоставят решение на този проблем.
+
+Елементът `<colgroup>` трябва да бъде включен като дъщерен елемент на таблицата, веднага след отварящия елемент `<table>`. Вътре в елемента `<colgroup>` можете да включите един или повече елемента `<col>`, които представляват групи от колони. Елементът `<col>` може да включва атрибут **span**, който показва броя на колоните в тази група. Той може също да включва глобални атрибути като **style** или **class**.
+
+<HtmlPlayground code = {`
+<table>
+    <colgroup>
+        <col span="2" />
+        <col class="column-background-test" />
+        <col class="column-fixed-width-test" />
+        <col class="column-background-test" />
+        <col class="column-background-border-test" />
+        <col span="2" class="column-fixed-width-test" />
+    </colgroup>
+    <tr>
+        <td>&nbsp;</td>
+        <th>Mon</th>
+        <th>Tues</th>
+        <th>Wed</th>
+        <th>Thurs</th>
+        <th>Fri</th>
+        <th>Sat</th>
+        <th>Sun</th>
+    </tr>
+    <tr>
+        <th>1st period</th>
+        <td>English</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>German</td>
+        <td>Dutch</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <th>2nd period</th>
+        <td>English</td>
+        <td>English</td>
+        <td>&nbsp;</td>
+        <td>German</td>
+        <td>Dutch</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+    </tr>
+</table>
+`}/>
+
+:::warning
+В примера горе към класовете е добавено **-test**, тъй като в долния пример се задават стилове за тези класове и това влияе на посочената таблица. Целта е тази таблица да **НЕ** бъде с приложени стилове, затова имената на класовете са променени 🙃
+:::
+
+В тази таблица има осем колони. Нека разгледаме по-отблизо структурите `<colgroup>` и `<col>`, за да покажем как това им влияе:
+
+```html
+<colgroup>
+  <col span="2" />
+  <col class="column-background" />
+  <col class="column-fixed-width" />
+  <col class="column-background" />
+  <col class="column-background-border" />
+  <col span="2" class="column-fixed-width" />
+</colgroup>
+```
+
+Разглеждане на елементите `<col>`:
+
+- Първият има зададен `span="2"`, така че представлява първата и втората колона отляво на таблицата. Тези колони нямат стилове, но трябва да ги включим, за да можем да насочим следващите колони.
+- Вторият и четвъртият нямат зададен атрибут `span`, така че ще представляват една колона - в тези случаи третата и петата колона. Към тях е приложен клас **column-background**.
+- Третият няма зададен атрибут `span` и има приложен клас **column-fixed-width**. Той представлява четвъртата колона.
+- Петият няма зададен атрибут `span` и има приложен клас **column-background-border**. Той представлява шестата колона.
+- Шестият има зададен `span="2"` и има приложен клас **column-fixed-width**. Той представлява седмата и осмата колона.
+
+Ето и стиловете, които са зададени на класовете:
+
+```css
+.column-background {
+  background-color: #97db9a;
+}
+.column-fixed-width {
+  width: 40px;
+}
+.column-background-border {
+  background-color: #dcc48e;
+  border: 4px solid #c1437a;
+}
+```
+
+- Елементите `<col>` с клас **column-background** имат зададен цвят на фона.
+- Елементите `<col>` с клас **column-fixed-width** имат зададена фиксирана ширина.
+- Елементът `<col>` с клас **column-background-border** има цвят на фона и цветна рамка.
+
+<HtmlPlayground code = {`
+<style>
+.column-background {
+        background-color: #97db9a;
+}
+.column-fixed-width {
+        width: 40px;
+}
+.column-background-border {
+        background-color: #dcc48e;
+        border: 4px solid #c1437a;
+}
+</style>
+
+<table>
+    <colgroup>
+        <col span="2" />
+        <col class="column-background" />
+        <col class="column-fixed-width" />
+        <col class="column-background" />
+        <col class="column-background-border" />
+        <col span="2" class="column-fixed-width" />
+    </colgroup>
+    <tr>
+        <td>&nbsp;</td>
+        <th>Mon</th>
+        <th>Tues</th>
+        <th>Wed</th>
+        <th>Thurs</th>
+        <th>Fri</th>
+        <th>Sat</th>
+        <th>Sun</th>
+    </tr>
+    <tr>
+        <th>1st period</th>
+        <td>English</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>German</td>
+        <td>Dutch</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <th>2nd period</th>
+        <td>English</td>
+        <td>English</td>
+        <td>&nbsp;</td>
+        <td>German</td>
+        <td>Dutch</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+    </tr>
+</table>
+`}/>
+
+**[Текуща тема](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/HTML_table_basics)**
+**[Следваща тема](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Table_accessibility)**
+
+**[]**
