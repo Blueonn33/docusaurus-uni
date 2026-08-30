@@ -20,6 +20,8 @@ function Preview({ code }) {
       style={{
         width: "100%",
         minHeight: "200px",
+        maxHeight: "400px",
+        overflow: "auto",
       }}
     />
   );
@@ -66,4 +68,3 @@ export default function HtmlPlayground({ code }) {
     </div>
   );
 }
-
