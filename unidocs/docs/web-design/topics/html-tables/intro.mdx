@@ -405,7 +405,7 @@ HTML таблиците трябва да се използват за табл�
 
 ### Добавяне на надпис
 
-Можете да приложите надпис на таблицата си, като го поставите в елемент `<caption>` и го вложите в елемента `<table>`. Трябва да го поставите точно под отварящия таг `<table>`.
+Можете да приложите надпис на таблицата си, като го поставите в елемент `<caption>` и го вложите в елемента `<table>`. Трябва да го поставите точно под отварящия таг `<table>`. **[[2]](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Table_accessibility#the_id_and_headers_attributes)**
 
 ```html
 <table>
@@ -440,12 +440,270 @@ HTML таблиците трябва да се използват за табл�
 `<tbody>` винаги е включен във всяка таблица, дори ако не го напишете в кода си. За да проверите това, отворете един от предишните си примери, който не включва `<tbody>`, и погледнете HTML кода в инструментите за разработчици на браузъра си **(десен бутон на мишката -> Инспектиране/Inspect)** — ще видите, че браузърът е добавил този таг вместо вас. Може би се чудите защо изобщо трябва да го включвате — трябва, защото ви дава по-голям контрол върху структурата и стила на таблицата.
 :::
 
+#### Tаблица със записи на разходи
+
+`spending-record.html`
+
+```html
+<h1>My spending record</h1>
+
+<table>
+  <caption>
+    How I chose to spend my money
+  </caption>
+  <tr>
+    <th>Purchase</th>
+    <th>Location</th>
+    <th>Date</th>
+    <th>Evaluation</th>
+    <th>Cost (€)</th>
+  </tr>
+  <tr>
+    <td>Haircut</td>
+    <td>Hairdresser</td>
+    <td>12/09</td>
+    <td>Great idea</td>
+    <td>30</td>
+  </tr>
+  <tr>
+    <td>Lasagna</td>
+    <td>Restaurant</td>
+    <td>12/09</td>
+    <td>Regrets</td>
+    <td>18</td>
+  </tr>
+  <tr>
+    <td>Shoes</td>
+    <td>Shoe shop</td>
+    <td>13/09</td>
+    <td>Big regrets</td>
+    <td>65</td>
+  </tr>
+  <tr>
+    <td>Toothpaste</td>
+    <td>Supermarket</td>
+    <td>13/09</td>
+    <td>Good</td>
+    <td>5</td>
+  </tr>
+  <tr>
+    <td>SUM</td>
+    <td>118</td>
+  </tr>
+</table>
+```
+
+`minimal-table.css`
+
+```minimal-table.css
+html {
+  font-family: sans-serif;
+}
+
+table {
+  border-collapse: collapse;
+  border: 2px solid rgb(200 200 200);
+  letter-spacing: 1px;
+  font-size: 0.8rem;
+}
+
+td,
+th {
+  border: 1px solid rgb(190 190 190);
+  padding: 10px 20px;
+}
+
+th {
+  background-color: rgb(235 235 235);
+}
+
+td {
+  text-align: center;
+}
+
+tr:nth-child(even) td {
+  background-color: rgb(250 250 250);
+}
+
+tr:nth-child(odd) td {
+  background-color: rgb(245 245 245);
+}
+
+caption {
+  padding: 10px;
+}
+```
+
+---
+
+<HtmlPlayground code = {`
+<style>
+html {
+      font-family: sans-serif;
+}
+table {
+      border-collapse: collapse;
+      border: 2px solid rgb(200 200 200);
+      letter-spacing: 1px;
+      font-size: 0.8rem;
+}
+td, th {
+      border: 1px solid rgb(190 190 190);
+      padding: 10px 20px;
+}
+th {
+      background-color: rgb(235 235 235);
+}
+td {
+      text-align: center;
+}
+tr:nth-child(even) td {
+      background-color: rgb(250 250 250);
+}
+tr:nth-child(odd) td {
+      background-color: rgb(245 245 245);
+}
+caption {
+      padding: 10px;
+}
+tbody {
+      font-size: 95%;
+      font-style: italic;
+}
+tfoot {
+      font-weight: bold;
+}
+</style>
+
+<table>
+    <caption>
+      How I chose to spend my money
+    </caption>
+    <thead>
+        <tr>
+            <th>Purchase</th>
+            <th>Location</th>
+            <th>Date</th>
+            <th>Evaluation</th>
+            <th>Cost (€)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Haircut</td>
+            <td>Hairdresser</td>
+            <td>12/09</td>
+            <td>Great idea</td>
+            <td>30</td>
+        </tr>
+        <tr>
+            <td>Lasagna</td>
+            <td>Restaurant</td>
+            <td>12/09</td>
+            <td>Regrets</td>
+            <td>18</td>
+        </tr>
+        <tr>
+            <td>Shoes</td>
+            <td>Shoe shop</td>
+            <td>13/09</td>
+            <td>Big regrets</td>
+            <td>65</td>
+        </tr>
+        <tr>
+            <td>Toothpaste</td>
+            <td>Supermarket</td>
+            <td>13/09</td>
+            <td>Good</td>
+            <td>5</td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="4">SUM</td>
+            <td>118</td>
+        </tr>
+    </tfoot>
+</table>
+`} />
+
+---
+
+- Редът със заглавните клетки се поставя вътре в елемент `<thead>`, редът **SUM** вътре в елемент `<tfoot>` и останалото съдържание вътре в елемент `<tbody>`.
+- След това добавете атрибут `colspan="4"`, за да накарате клетката **SUM** да се разпростира през първите четири колони, така че действителното число да се показва в долната част на колоната **Cost**.
+- Накрая се добавят и стилове за `<tbody>` и `<tfoot>`.
+
+### Атрибутите id и headers
+
+Атрибутите **id** и **headers** се използват за създаване на асоциации между клетки с данни и заглавни клетки.
+
+Елементът `<th>` може да предостави заглавие или за клетка с данни `<td>`, или, в по-сложни таблици, за друга заглавна клетка `<th>`. Това ви позволява да създавате слоести или групирани заглавни части, където една заглавна клетка описва няколко други.
+
+Атрибутът **headers** се използва за свързване на клетка, `<td>` или `<th>`, с една или повече заглавни клетки. Той приема списък с **низове (поредица от символи, използвани за представяне на текст)**, разделени с интервал; редът на низовете няма значение. Всеки низ трябва да съответства на уникалния идентификатор на елемент `<th>`, с който е свързана клетката.
+
+Този метод дава на вашата HTML таблица по-ясно определение на позицията на всяка клетка, въз основа на заглавните части за колоната и реда, към който принадлежи, подобно на електронна таблица. За да работи това добре, вашата таблица трябва да включва заглавни клетки както на колони, така и на редове.
+
+Нека разгледаме част от примера „Продадени артикули през август 2026 г.“, за да видим как да използваме атрибутите id и headers:
+
+- Добавете уникален идентификатор към всеки `<th>` елемент в таблицата.
+- За заглавните клетки: Добавете атрибут **headers** към всеки `<th>` елемент, който действа като подзаглавие, т.е. заглавна клетка с друга заглавна част над нея. Стойността е идентификаторът на заглавието от високо ниво. В нашия пример това е **clothes** за заглавните части на колоните и **belgium** за заглавната част на реда.
+- За клетките с данни: Добавете атрибут **headers** към всеки `<td>` елемент и добавете идентификаторите на свързаните `<th>` елементи като списък, разделен с интервали. Можете да продължите както бихте направили в електронна таблица: Намерете клетката с данни, след което намерете заглавните клетки на редовете и колоните, които я описват. Редът на посочените идентификатори няма значение, но поддържането на последователност помага за организирането и подобрява четливостта на кода.
+
+---
+
+<HtmlPlayground code = {`
+<table>
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+            <th id="clothes" colspan="3">Clothes</th>
+        </tr>
+        <tr>
+            <th></th>
+            <th></th>
+            <th id="trousers" headers="clothes">Trousers</th>
+            <th id="skirts" headers="clothes">Skirts</th>
+            <th id="dresses" headers="clothes">Dresses</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th id="belgium" rowspan="2">Belgium</th>
+            <th id="antwerp" headers="belgium">Antwerp</th>
+            <td headers="belgium antwerp clothes trousers">56</td>
+            <td headers="belgium antwerp clothes skirts">22</td>
+            <td headers="belgium antwerp clothes dresses">43</td>
+        </tr>
+        <tr>
+            <th id="ghent" headers="belgium">Ghent</th>
+            <td headers="belgium ghent clothes trousers">41</td>
+            <td headers="belgium ghent clothes skirts">17</td>
+            <td headers="belgium ghent clothes dresses">35</td>
+        </tr>
+    </tbody>
+</table>
+`}/>
+
+---
+
+- `<th>` за **Belgium** използва `rowspan="2"`, за да обхване и **Antwerp**, и **Ghent**.
+- Заглавните клетки на града (Antwerp и Ghent) използват атрибута **headers**, за да посочат Belgium, за да покажат, че принадлежат към групата Belgium.
+- Всеки `<td>` включва атрибут **headers** за държава (Belgium), град (Antwerp или Ghent), група (Clothes) и конкретния артикул облекло (trousers, skirts или dresses).
+
+---
+
+> Успя да разбереш как се използват таблиците? 🫠
+>
+> Провери какво си научил, като решиш **[това предизвикателство](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Planet_data_table)** 😲
+
 ---
 
 ## Използвана литература
 
-- ### [MDN Web Docs - HTML tables 1](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/HTML_table_basics)
-- ### [MDN Web Docs - HTML tables 2](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Table_accessibility)
+- ### [MDN Web Docs - HTML tables - 1](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/HTML_table_basics)
+- ### [MDN Web Docs - HTML tables - 2](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Table_accessibility)
+- ### [MDN Web Docs - HTML tables - challenge](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Planet_data_table)
 
 - ### **[Frame - deprecated](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/frame)**
 - ### **[Frameset - deprecated](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/frameset)**
