@@ -146,11 +146,7 @@ const config = {
               {
                 label: 'LinkedIn',
                 href: 'https://www.linkedin.com/in/martin-marinov-3b65b6284/',
-              },
-              {
-                label: 'YouTube',
-                href: 'https://www.youtube.com/@Mansor_17',
-              },
+              }
             ],
           },
           {
@@ -163,6 +159,10 @@ const config = {
               {
                 label: 'GitHub',
                 href: 'https://github.com/Blueonn33',
+              },
+              {
+                label: 'YouTube',
+                href: 'https://www.youtube.com/@Mansor_17',
               },
             ],
           },
