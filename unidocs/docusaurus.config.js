@@ -17,7 +17,7 @@ fs.writeFileSync('./static/env.js', `window.API_KEY="${key}";`);
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Документация',
-  tagline: 'Съдържа всичко най-важно за предметите Уеб дизайн и Уеб програмиране на .NET',
+  tagline: 'Съдържа всичко най-важно за дисциплината Уеб дизайн',
   favicon: 'img/favicon.ico',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
@@ -119,10 +119,10 @@ const config = {
             label: 'Уеб дизайн',
           },
           {
-            type: 'docSidebar',
-            sidebarId: 'aspNetSidebar',
-            position: 'left',
-            label: '.NET',
+            // type: 'docSidebar',
+            // sidebarId: 'aspNetSidebar',
+            // position: 'left',
+            // label: '.NET',
           },
           // {
           //   type: 'docSidebar',
@@ -149,8 +149,8 @@ const config = {
                 to: '/docs/web-design/intro',
               },
               {
-                label: '.NET',
-                to: '/docs/asp-net/intro',
+                // label: '.NET',
+                // to: '/docs/asp-net/intro',
               },
             ],
           },
