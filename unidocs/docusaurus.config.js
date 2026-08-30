@@ -162,7 +162,7 @@ const config = {
               },
               {
                 label: 'GitHub',
-                href: 'https://github.com/Blueonn33/docusaurus-uni',
+                href: 'https://github.com/Blueonn33',
               },
             ],
           },
