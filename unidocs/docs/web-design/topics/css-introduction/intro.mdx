@@ -1,0 +1,111 @@
+import HtmlPlayground from "@site/src/components/HtmlPlayground";
+
+# Въведение в CSS
+
+CSS - Cascading Style Sheets (каскадни стилови таблици) е език, който ви позволява да създавате страхотно изглеждащи уеб страници. **[[1]](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/What_is_CSS)**
+
+Тук можете да прочетете **[[допълнителна информацията]](https://developer.mozilla.org/en-US/docs/Web/CSS)** за CSS.
+
+## Стиловe по подразбиране на браузъра
+
+Вече разгледахме какво е HTML и как се използва в документи. Тези документи ще бъдат четими в уеб браузър. Заглавията ще изглеждат по-големи от обикновения текст, абзаците ще се разделят на нов ред и ще имат интервал между себе си. Връзките са оцветени и подчертани, за да се различат от останалия текст.
+
+<img
+  src="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/What_is_CSS/html-example.png"
+  alt="html page default css"
+  width={700}
+  style={{ border: "1px solid #461364" }}
+/>
+
+Това, което виждате, са стиловете по подразбиране на браузъра – много основно стилизиране, което браузърът прилага към HTML, за да гарантира, че страницата ще бъде четлива, дори ако авторът на страницата не е посочил изрично стилизиране. Тези стилове са дефинирани в CSS стилови таблици по подразбиране, съдържащи се в браузъра – те нямат нищо общо с HTML.
+
+:::warning
+Интернет би било скучно място, ако всички уебсайтове изглеждаха така. Ето защо трябва да научите CSS 🫡.
+:::
+
+## За какво се използва CSS?
+
+С помощта на CSS можете да контролирате как точно изглеждат HTML елементите в браузъра, представяйки документите си на потребителите с какъвто и да е дизайн и оформление, които желаете.
+
+- Документът обикновено е текстов файл, структуриран с помощта на език за маркиране, най-често HTML (тези се наричат ​​HTML документи). Може да попаднете и на документи, написани на други езици за маркиране, като SVG или XML. HTML документът съдържа съдържанието на уеб страница и определя нейната структура.
+- 
+
+Имаме следния HTML код:
+
+---
+
+<HtmlPlayground
+  code={`
+<p>Instructions for life:</p>
+<ul>
+  <li>Eat</li>
+  <li>Sleep</li>
+  <li>Repeat</li>
+</ul>
+`}
+/>
+---
+
+Ако добавим малко CSS, можем да променим начина, по който изглежда HTML съдържанието. Следният фрагмент избира елемента `<p>` и му дава различен шрифт и червен цвят на текста. След това избира всички елементи `<li>` и дава на всеки от тях зелено-жълт цвят на фона, плътна черна рамка от 1 пиксел и долен margin от 5 пиксела:
+
+```css
+p {
+  font-family: sans-serif;
+  color: red;
+}
+
+li {
+  background-color: greenyellow;
+  border: 1px solid black;
+  margin-bottom: 5px;
+}
+```
+
+---
+
+<HtmlPlayground code = {`
+<style>
+p {
+        font-family: sans-serif;
+        color: red;
+}
+li {
+        background-color: greenyellow;
+        border: 1px solid black;
+        margin-bottom: 5px;
+}
+</style>
+
+<p>Instructions for life:</p>
+<ul>
+        <li>Eat</li>
+        <li>Sleep</li>
+        <li>Repeat</li>
+</ul>
+`} />
+---
+
+Както виждате, само с малко CSS успяхме да променим външния вид на един обикновен списък. CSS има много други функции, от задаване на фонови изображения и преливащи цветове, до контролиране на типографията и поведението при превъртане, добавяне на анимации и изграждане на цялостни оформления на уеб страници.
+
+## Прилагане на CSS към HTML документ
+
+Когато използвате CSS, първото нещо, което трябва да направите правилно, е да се уверите, че вашият CSS е успешно приложен към вашия HTML код. В този раздел ще добавим CSS стилове към вашата страница. **[[2]](https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Your_first_website/Styling_the_content)**
+
+- Създайте си файл `index.html`. След това сложете един `<p>` елемент, съдържащ някакъв текст.
+- Продължаваме със следващия файл - `styles.css`. В него сложете следния код:
+
+```css
+p {
+  color: red;
+}
+```
+
+- За да приложим стиловете към HTML документа, трябва да укажем връзка към `styles.css` файла. Това се осъществява чрез `<link href="style.css" rel="stylesheet" />`
+
+---
+
+## Използвана литература
+
+- ### [MDN Web Docs - CSS ?](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/What_is_CSS)
+- ### [MDN Web Docs - CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
+- ### [MDN Web Docs - CSS styling](https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Your_first_website/Styling_the_content)
