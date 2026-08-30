@@ -103,6 +103,15 @@ HTML таблиците трябва да се използват за табл�
 ---
 
 <HtmlPlayground code = {`
+<style>
+table, th, td {
+  border: 1px solid black;
+  padding: 5px;
+}
+table {
+  border-collapse: collapse;
+}
+</style>
 <table>
   <tr>
     <td>&nbsp;</td>
@@ -137,6 +146,15 @@ HTML таблиците трябва да се използват за табл�
 ---
 
 <HtmlPlayground code = {`
+<style>
+table, th, td {
+  border: 1px solid black;
+  padding: 5px;
+}
+table {
+  border-collapse: collapse;
+}
+</style>
 <table>
   <tr>
     <td>&nbsp;</td>
@@ -181,6 +199,15 @@ HTML таблиците трябва да се използват за табл�
 ---
 
 <HtmlPlayground code = {`
+<style>
+table, th, td {
+  border: 1px solid black;
+  padding: 5px;
+}
+table {
+  border-collapse: collapse;
+}
+</style>
 <table>
   <tr>
     <th>Animals</th>
@@ -217,6 +244,15 @@ HTML таблиците трябва да се използват за табл�
 ---
 
 <HtmlPlayground code = {`
+<style>
+table, th, td {
+  border: 1px solid black;
+  padding: 5px;
+}
+table {
+  border-collapse: collapse;
+}
+</style>
 <table>
   <tr>
     <th colspan="2">Animals</th>
@@ -255,6 +291,15 @@ HTML таблиците трябва да се използват за табл�
 ---
 
 <HtmlPlayground code = {`
+<style>
+table, th, td {
+  border: 1px solid black;
+  padding: 5px;
+}
+table {
+  border-collapse: collapse;
+}
+</style>
 <table>
     <colgroup>
         <col span="2" />
@@ -356,6 +401,13 @@ HTML таблиците трябва да се използват за табл�
 .column-background-border {
         background-color: #dcc48e;
         border: 4px solid #c1437a;
+}
+table, th, td {
+  border: 1px solid black;
+  padding: 5px;
+}
+table {
+  border-collapse: collapse;
 }
 </style>
 
@@ -652,6 +704,15 @@ tfoot {
 ---
 
 <HtmlPlayground code = {`
+<style>
+table, th, td {
+  border: 1px solid black;
+  padding: 5px;
+}
+table {
+  border-collapse: collapse;
+}
+</style>
 <table>
     <thead>
         <tr>
@@ -703,7 +764,59 @@ tfoot {
 
 ### IFrame
 
+HTML елементът `<iframe>` представлява вложен контекст, вграждайки друга HTML страница в текущата. **[[3]](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/iframe)**
 
+<HtmlPlayground code = {`
+<iframe
+    id="inlineFrameExample"
+    title="Inline Frame Example"
+    width="300"
+    height="200"
+    src="https://www.openstreetmap.org/export/embed.html?bbox=-0.004017949104309083%2C51.47612752641776%2C0.00030577182769775396%2C51.478569861898606&amp;layer=mapnik">
+</iframe>
+`}/>
+
+Всеки вграден контекст има свой собствен документ и позволява URL навигация. Контекстът за сърфиране, който вгражда останалите, се нарича **родителски контекст за сърфиране**. Най-горният контекст за сърфиране – този без родител – обикновено е **прозорецът на браузъра**, представен от **[[обекта Window]](https://developer.mozilla.org/en-US/docs/Web/API/Window)**.
+
+:::warning
+Тъй като всеки контекст за сърфиране е цялостен документ, всеки `<iframe>` в страницата изисква увеличена памет и други изчислителни ресурси. Въпреки че теоретично можете да използвате колкото искате `<iframe>`, проверете за проблеми с производителността.
+:::
+
+Елементът `<iframe>` съдържа **[следните атрибути](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/iframe#attributes).**
+
+#### Адаптивно оразмеряване
+
+От съображения за сигурност и поверителност, елементите `<iframe>` по подразбиране не предоставят никаква информация на родителския документ относно размера на съдържанието в документа, който вграждат.
+
+За да се активира адаптивно оразмеряване на елементите `<iframe>` въз основа на тяхното съдържание, тагът `<meta name="responsive-embedded-sizing">` може да бъде включен във вграден документ, за да се включи споделянето на информация за размера му с родителския документ. CSS свойството **frame-sizing** може да бъде зададено на `<iframe>`, за да се приеме същият хоризонтален или вертикален размер като действителния размер на съдържанието на вградения документ. Това гарантира, че съдържанието на `<iframe>` се вписва безпроблемно във вграждащия модул.
+
+#### Достъпност
+
+Хората, които навигират с помощни технологии като например екранен четец, могат да използват атрибута **title** на `<iframe>`, за да обозначат съдържанието му. Стойността на title трябва да описва сбито вграденото съдържание:
+
+```html
+<iframe
+  title="Wikipedia page for Avocados"
+  src="https://en.wikipedia.org/wiki/Avocado">
+</iframe>
+```
+
+Без това заглавие, те трябва да навигират в `<iframe>`, за да определят какво е вграденото му съдържание. Тази промяна на контекста може да бъде объркваща и отнемаща време, особено за страници с множество `<iframe>` и/или ако вградените елементи съдържат интерактивно съдържание като видео или аудио.
+
+---
+
+Този пример вгражда страницата с адрес https://example.org в `<iframe>`. Това е често срещан случай на употреба на iframe-ове: за вграждане на съдържание от друг сайт.
+
+<HtmlPlayground code = {`
+<iframe
+    src="https://example.org"
+    title="iframe Example 1"
+    width="400"
+    height="300">
+</iframe>
+`} />
+
+---
 
 ### Frame
 
@@ -742,7 +855,7 @@ HTML елементът `<frame>` определя определена обла
 
 HTML елементът `<frameset>` се използва за съдържане на елементи `<frame>`. Той поддържа **[[следните атрибути]](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/frameset#attributes).**
 
-Документ с рамки има елемент `<frameset>` вместо елемент `<body>`. Елементите `<frame>` са поставени в `<frameset>`.
+Документ с рамки има елемент `<frameset>` вместо елемент `<body>`. Елементите `<frame>` са поставени в `<frameset>`. **[[5]](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/frameset)**
 
 ```html
 <!doctype html>
@@ -766,8 +879,6 @@ HTML елементът `<frameset>` се използва за съдържан
 - ### [MDN Web Docs - HTML tables - 1](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/HTML_table_basics)
 - ### [MDN Web Docs - HTML tables - 2](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Table_accessibility)
 - ### [MDN Web Docs - HTML tables - challenge](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Planet_data_table)
-
-- ### **[Frame - deprecated](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/frame)**
-- ### **[Frameset - deprecated](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/frameset)**
-
-- ### **[IFrame](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/iframe)**
+- ### [MDN Web Docs - HTML iframe](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/iframe)
+- ### [MDN Web Docs - HTML frame](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/frame)
+- ### [MDN Web Docs - HTML frameset](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/frameset)
