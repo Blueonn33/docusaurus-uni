@@ -699,6 +699,68 @@ tfoot {
 
 ---
 
+## Фреймове
+
+### IFrame
+
+
+
+### Frame
+
+`<frame> - остарял (deprecated)`
+
+:::warning
+Избягвайте използването на тази функция в нови проекти. Тази функция може да е кандидат за премахване от уеб стандартите или браузърите.
+:::
+
+HTML елементът `<frame>` определя определена област, в която може да се покаже друг HTML документ. Рамка трябва да се използва вътре в `<frameset>`. Използването на елемента `<frame>` не се препоръчва поради определени недостатъци като например проблеми с производителността и липса на достъпност за потребители с екранни четци. Вместо елемента `<frame>`, може да се предпочете `<iframe>`. **[[4]](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/frame)**
+
+`<frame>` поддържа **[[следните атрибути]](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/frame#attributes).**
+
+Документ с рамки има елемент `<frameset>` вместо елемент `<body>`. Елементите `<frame>` се намират в `<frameset>`.
+
+```html
+<!doctype html>
+<html lang="en-US">
+    <head>
+        <!-- Document metadata goes here -->
+    </head>
+    <frameset cols="400, 500">
+        <frame src="https://developer.mozilla.org/en/HTML/Element/iframe" />
+        <frame src="https://developer.mozilla.org/en/HTML/Element/frame" />
+    </frameset>
+</html>
+```
+
+### Frameset
+
+`<frameset> - остарял (deprecated)`
+
+:::warning
+Избягвайте използването на тази функция в нови проекти. Тази функция може да е кандидат за премахване от уеб стандартите или браузърите.
+:::
+
+HTML елементът `<frameset>` се използва за съдържане на елементи `<frame>`. Той поддържа **[[следните атрибути]](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/frameset#attributes).**
+
+Документ с рамки има елемент `<frameset>` вместо елемент `<body>`. Елементите `<frame>` са поставени в `<frameset>`.
+
+```html
+<!doctype html>
+<html lang="en-US">
+    <head>
+      <!-- Document metadata goes here -->
+    </head>
+    <frameset cols="50%, 50%">
+        <frame
+          src="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/iframe" />
+        <frame
+          src="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/frame" />
+    </frameset>
+</html>
+```
+
+---
+
 ## Използвана литература
 
 - ### [MDN Web Docs - HTML tables - 1](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/HTML_table_basics)
