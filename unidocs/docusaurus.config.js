@@ -117,26 +117,8 @@ const config = {
             sidebarId: 'webDesignSidebar',
             position: 'left',
             label: 'Уеб дизайн',
-          },
-          {
-            // type: 'docSidebar',
-            // sidebarId: 'aspNetSidebar',
-            // position: 'left',
-            // label: '.NET',
-          },
-          // {
-          //   type: 'docSidebar',
-          //   sidebarId: 'tutorialSidebar',
-          //   position: 'left',
-          //   label: 'Tutorial',
-          // },
-          // {to: '/blog', label: 'Blog', position: 'left'},
-          // {
-          //   href: 'https://github.com/Blueonn33/docusaurus-uni',
-          //   label: 'GitHub',
-          //   position: 'right',
-          // },
-        ],
+          }
+        ]
       },
       footer: {
         style: 'dark',
@@ -147,12 +129,8 @@ const config = {
               {
                 label: 'Уеб дизайн',
                 to: '/docs/web-design/intro',
-              },
-              {
-                // label: '.NET',
-                // to: '/docs/asp-net/intro',
-              },
-            ],
+              }
+            ]
           },
           {
             title: 'Социални мрежи',
