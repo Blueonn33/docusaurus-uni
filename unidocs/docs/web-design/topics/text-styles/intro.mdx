@@ -165,8 +165,8 @@ CSS ви дава прецизен контрол върху това как и�
 - **[Text Color (Цвят на текста)](#text-color)**.
 - **[Text Alignment (Подравняване на текста)](#text-alignment)**.
 - **[Text Decoration (Декорация на текста)](#text-decoration)**.
-- Text Transform (Трансформация на текста).
-- Text Shadow (Сянка на текста). 
+- **[Text Transform (Трансформация на текста)](#text-transform)**.
+- **[Text Shadow (Сянка на текста)](#text-shadow). 
 - Text Indentation (Отстъп на текста).
 - Letter Spacing (Разстояние между буквите).
 - Line Height (Височина на реда).
@@ -227,6 +227,61 @@ CSS ви дава прецизен контрол върху това как и�
 `} />
 
 ---
+
+### Text Transform
+
+Свойството `transform` се използва за контрол на буквите в текста. Това означава, че можете да зададете текста да бъде с главни, малки или с първа главна (title case).
+
+Свойството има следните стойности:
+
+- **Uppercase (text-transform: uppercase)** - Преобразува всички символи в главни.
+- **Lowercase (text-transform: lowercase)** - Преобразува всички символи в малки
+- **Capitalize (text-transform: capitalize)** - Преобразува първия символ от всяка дума в главен.
+- **None (text-transform: none)** - Оставя текста такъв, какъвто е въведен; това е настройката по подразбиране.
+
+---
+
+<HtmlPlayground code = {`
+<p style="text-transform:uppercase">Paragraph with uppercase.</p>
+<p style="text-transform:lowercase">Paragraph with lowercase.</p>
+<p style="text-transform:capitalize">Paragraph with capitalize.</p>
+`} />
+
+---
+
+:::note
+Имайте предвид, че `text-transform` променя само начина, по който се показва текстът - основното HTML съдържание остава точно както сте го написали, което е важно за копиране и поставяне и достъпност.
+:::
+
+### Text Shadow
+
+Свойството `text-shadow` добавя една или повече сенки към текста. Всяка сянка е описана с до четири стойности, в следния ред:
+
+```css
+text-shadow: h-shadow v-shadow blur-radius color;
+```
+
+- **h-shadow (задължително)** - Хоризонтално отместване; положителната стойност премества сянката надясно, отрицателната - наляво.
+- **v-shadow (задължително)** - Вертикално отместване; положителната стойност премества сянката надолу, отрицателната - нагоре.
+- **blur-radius (по избор)** - Колко размазана е сянката; по-големите стойности я размазват повече (по подразбиране е 0).
+- **color (по избор)** - Цветът на сянката; ако е пропуснат, браузърът използва цвета на елемента.
+
+Можете да подреждате множество сенки, като ги разделяте със запетаи, което е начинът, по който се изграждат ефектите на сияние и контур.
+
+<HtmlPlayground code = {`
+<style>
+h1 {
+        text-shadow: 2px 2px 4px #888888;
+}
+h2 {
+        /* Two shadows stacked to create a glow */
+        text-shadow: 0 0 6px #ff0000, 0 0 12px #ff0000;
+}
+</style>
+
+<h1>Heading with a soft drop shadow</h1>
+<h2>Heading with a red glow</h2>
+`} />
 
 ---
 
