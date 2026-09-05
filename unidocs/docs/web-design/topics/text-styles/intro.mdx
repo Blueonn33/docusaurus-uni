@@ -11,6 +11,10 @@ CSS свойствата, използвани за стилизиране на 
 
 ## Шрифтове
 
+:::warning
+Google fonts
+:::
+
 Използвайте свойствата за задаване на шрифт в CSS, за да стилизирате текст, да определите неговия размер, удебеляване и семейство от шрифтове. 
 
 Типографията е едно от първите неща, които потребителят забелязва на страницата, а CSS ви дава прецизен контрол върху нея. Свойствата на шрифта в CSS определят шрифта (**семейството шрифтове - font family**), размера, дебелината (**удебелен шрифт**) и стила (**като курсив**) на вашия текст. **[[2]](https://www.w3docs.com/learn-css/css-font)**
@@ -20,8 +24,8 @@ CSS свойството `font` е съкращение, което комбин
 - **[Font Family (Семейство шрифтове)](#font-family)**.
 - **[Font Style (Стил на шрифта)](#font-style)**.
 - **[Font Size (Размер на шрифта)](#font-size)**.
-- Font Weight (Дебелина на шрифта).
-- Font Variant (Вариант на шрифта).
+- **[Font Weight (Дебелина на шрифта)](#font-weight)**.
+- **[Font Variant (Вариант на шрифта)](#font-variant)**.
 
 Когато добавяме текст или връзки към уеб страница, ние ги стилизираме, използвайки тези свойства. Нека ги разгледаме подробно.
 
@@ -105,6 +109,71 @@ p {
 
 ---
 
+Числовите стойности варират от 100 до 900. Стойността 400 съответства на нормален шрифт, а 700 съответства на удебелен. С увеличаване на числото от 100 до 900, шрифтът става по-удебелен.
+
+### Font Variant
+
+Свойството `font-variant` ви позволява да зададете текст на нормален или малък регистър (small-caps).
+
+Стойността **small-caps** преобразува малките букви в главни, но ги показва с по-малък размер от оригиналните главни букви.
+
+---
+
+<HtmlPlayground code = {`
+<h2>Font-variant property example</h2>
+<p>Here we used a normal text as you can see.</p>
+<p style="font-variant: small-caps;">But We Used A Text With Small-Caps Here.</p>
+`} />
+
+---
+
+### Font
+
+Вместо да пишете всяко свойство на отделен ред, можете да ги зададете всички наведнъж със съкращението `font`. Това прави вашите стилове по-кратки и групира свързаните декларации заедно.
+
+Редът на стойностите е важен. Синтаксисът е:
+
+```css
+font: font-style font-variant font-weight font-size/line-height font-family;
+```
+
+Няколко правила, които трябва да запомните:
+
+- **font-size** и **font-family** са задължителни. Ако някой от тях липсва, цялата декларация се игнорира.
+- **font-style**, **font-variant**, and **font-weight** са незадължителни и трябва да са преди **font-size**.
+- **line-height** е незадължителна и се пише след **font-size**, разделена с наклонена черта (/).
+- Всяка стойност, която пропуснете, се връща към стойността си по подразбиране, така че съкратеният вариант е удобен начин за изчистване на по-ранни декларации с пълен вариант.
+
+```css
+/* Longhand */
+p {
+  font-style: italic;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 1.5;
+  font-family: Georgia, serif;
+}
+
+/* Equivalent shorthand */
+p {
+  font: italic bold 18px/1.5 Georgia, serif;
+}
+```
+
+## Текст
+
+CSS ви дава прецизен контрол върху това как изглежда текстът. Разгледани са основните свойства, които се прилагат върху текст.
+
+- Text Color (Цвят на текста).
+- Text Alignment (Подравняване на текста).
+- Text Decoration (Декорация на текста).
+- Text Transform (Трансформация на текста).
+- Text Shadow (Сянка на текста). 
+- Text Indentation (Отстъп на текста).
+- Letter Spacing (Разстояние между буквите).
+- Line Height (Височина на реда).
+- Word Spacing (Разстояние между думите).
+
 ---
 
 ## Използвана литература
@@ -112,3 +181,4 @@ p {
 - ### [MDN Web Docs - Text styling](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Text_styling/Fundamentals)
 - ### [W3Docs - CSS font](https://www.w3docs.com/learn-css/css-font)
 - ### [W3Docs - CSS font-size](https://www.w3docs.com/learn-css/font-size)
+- ### [W3Docs - CSS text](https://www.w3docs.com/learn-css/css-text)
