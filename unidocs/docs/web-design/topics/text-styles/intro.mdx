@@ -11,10 +11,6 @@ CSS свойствата, използвани за стилизиране на 
 
 ## Шрифтове
 
-:::warning
-Google fonts
-:::
-
 Използвайте свойствата за задаване на шрифт в CSS, за да стилизирате текст, да определите неговия размер, удебеляване и семейство от шрифтове. 
 
 Типографията е едно от първите неща, които потребителят забелязва на страницата, а CSS ви дава прецизен контрол върху нея. Свойствата на шрифта в CSS определят шрифта (**семейството шрифтове - font family**), размера, дебелината (**удебелен шрифт**) и стила (**като курсив**) на вашия текст. **[[2]](https://www.w3docs.com/learn-css/css-font)**
@@ -160,19 +156,77 @@ p {
 }
 ```
 
+---
+
 ## Текст
 
 CSS ви дава прецизен контрол върху това как изглежда текстът. Разгледани са основните свойства, които се прилагат върху текст.
 
-- Text Color (Цвят на текста).
-- Text Alignment (Подравняване на текста).
-- Text Decoration (Декорация на текста).
+- **[Text Color (Цвят на текста)](#text-color)**.
+- **[Text Alignment (Подравняване на текста)](#text-alignment)**.
+- **[Text Decoration (Декорация на текста)](#text-decoration)**.
 - Text Transform (Трансформация на текста).
 - Text Shadow (Сянка на текста). 
 - Text Indentation (Отстъп на текста).
 - Letter Spacing (Разстояние между буквите).
 - Line Height (Височина на реда).
 - Word Spacing (Разстояние между думите).
+
+### Text Color
+
+Свойството `color` задава цвета на текста на елемента (и по подразбиране, неговите текстови декорации, като например подчертавания - underlines). Можете да зададете стойността като цвят (red), HEX стойност (#ff0000), стойност на rgb() / rgba() (rgb(255 0 0)) или hsl() стойност. Тъй като цветът се наследява, задаването му върху контейнер го прилага към целия наследен текст, освен ако наследен елемент не го презапише.
+
+---
+
+<HtmlPlayground code = {`
+<p style="color:#ff0000">This is some paragraph in red.</p>
+`} />
+
+---
+
+### Text Alignment
+
+Свойството `alignment` се използва за подравняване на текст вътре в елемент вляво, вдясно, в центъра и т.н.
+
+Подравняването на текст има четири стойности:
+
+- **Left (text-align: left)** - Подравнява текста вляво.
+- **Right (text-align: right)** - Подравнява текста вдясно.
+- **Center (text-align: center)** - Поставя текста в центъра на страницата.
+- **Justify (text-align: justify)** - Разтяга реда с текст, за да подравни и левия, и десния край (както в списания и вестници).
+
+По подразбиране браузърите подравняват текста в началото на реда - вляво. Използвайте съответстващата стойност, когато се нуждаете от различно подравняване.
+
+---
+
+<HtmlPlayground code = {`
+<p>This is some paragraph</p>
+<p style="text-align:center">Some paragraph with value center.</p>
+<p style="text-align:right">Some paragraph with value right.</p>
+<p style="text-align:justify">Some paragraph with value justify.</p>
+`} />
+
+---
+
+### Text Decoration
+
+Свойството `text-decoration` добавя линии към текста. В съвременния CSS това е съкращение за **text-decoration-line**, **text-decoration-color** и **text-decoration-style**. Най-често срещаните стойности за частта text-decoration-line са:
+
+- **Overline (text-decoration: overline)** - Чертае линия над текста.
+- **Underline (text-decoration: underline)** - Чертае линия под текста.
+- **Line-through (text-decoration: line-through)** - Чертае линия през средата на текста.
+- **None (text-decoration: none)** - Премахва всякаква декорация; това е, което използвате, за да премахнете подчертаването по подразбиране от хипервръзките.
+
+---
+
+<HtmlPlayground code = {`
+<a style="text-decoration:none">This is link without underline</a>
+<h1 style="text-decoration:overline">Heading with value overline.</h1>
+<p style="text-decoration:line-through">Some paragraph with value line-through.</p>
+<a style="text-decoration:underline">Some hyperlink with value underline.</a>
+`} />
+
+---
 
 ---
 
