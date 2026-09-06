@@ -160,17 +160,17 @@ p {
 
 ## Текст
 
-CSS ви дава прецизен контрол върху това как изглежда текстът. Разгледани са основните свойства, които се прилагат върху текст.
+CSS ви дава прецизен контрол върху това как изглежда текстът. Разгледани са основните свойства, които се прилагат върху текст. **[[3]](https://www.w3docs.com/learn-css/css-text)**
 
-- **[Text Color (Цвят на текста)](#text-color)**.
-- **[Text Alignment (Подравняване на текста)](#text-alignment)**.
-- **[Text Decoration (Декорация на текста)](#text-decoration)**.
-- **[Text Transform (Трансформация на текста)](#text-transform)**.
-- **[Text Shadow (Сянка на текста)](#text-shadow). 
-- Text Indentation (Отстъп на текста).
-- Letter Spacing (Разстояние между буквите).
-- Line Height (Височина на реда).
-- Word Spacing (Разстояние между думите).
+- **[Text Color (Цвят на текста)](https://www.w3docs.com/learn-css/color)**.
+- **[Text Alignment (Подравняване на текста)](https://www.w3docs.com/learn-css/text-align)**.
+- **[Text Decoration (Декорация на текста)](https://www.w3docs.com/learn-css/text-decoration)**.
+- **[Text Transform (Трансформация на текста)](https://www.w3docs.com/learn-css/text-transform)**.
+- **[Text Shadow (Сянка на текста)](https://www.w3docs.com/learn-css/text-shadow)**. 
+- **[Text Indentation (Отстъп на текста)](https://www.w3docs.com/learn-css/text-indent)**.
+- **[Letter Spacing (Разстояние между буквите)](https://www.w3docs.com/learn-css/letter-spacing)**.
+- **[Line Height (Височина на реда)](https://www.w3docs.com/learn-css/line-height)**.
+- **[Word Spacing (Разстояние между думите)](https://www.w3docs.com/learn-css/word-spacing)**.
 
 ### Text Color
 
@@ -268,6 +268,8 @@ text-shadow: h-shadow v-shadow blur-radius color;
 
 Можете да подреждате множество сенки, като ги разделяте със запетаи, което е начинът, по който се изграждат ефектите на сияние и контур.
 
+---
+
 <HtmlPlayground code = {`
 <style>
 h1 {
@@ -281,6 +283,146 @@ h2 {
 
 <h1>Heading with a soft drop shadow</h1>
 <h2>Heading with a red glow</h2>
+`} />
+
+---
+
+### Text Indentation
+
+Свойството `text-indentation` (отстъп на текст) се използва за задаване на дължината на празното пространство на първия ред в текстов блок. Стойностите по-долу са валидни за това свойство:
+
+- **length** - Определя отстъпа в px, pt, cm, em и др. Стойността по подразбиране е 0. Допустими са отрицателни стойности.
+- **percentage** - Определя отстъпа като процент от ширината на съдържащия го блок.
+- **each-line** - Когато отстъпът засяга първия ред, както и всеки ред след принудително прекъсване на реда, но не засяга редовете след меко прекъсване.
+- **hanging** - Обръща кои редове са с отстъп. Първият ред не е с отстъп.
+- **initial** - Кара свойството да използва стойността си по подразбиране.
+- **inherit** - Наследява свойството от родителския елемент.
+
+---
+
+<HtmlPlayground code = {`
+<style>
+p {
+      text-indent: 100px;
+      line-height: 24px;
+      font-size: 16px;
+}
+</style>
+  
+<h2>Text Indentation Example</h2>
+<p>
+  Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's De Finibus Bonorum et Malorum for use in a type specimen book.
+</p>
+`} />
+
+---
+
+### Letter Spacing
+
+CSS свойството `letter-spacing` позволява да се дефинират интервалите между буквите/символите в текст. Следните стойности се поддържат от това свойство:
+
+- **normal** - Няма да има допълнителни интервали между символите. Това е стойността по подразбиране на това свойство.
+- **length** - Определя допълнително разстояние между символите. Допускат се отрицателни стойности.
+- **initial** - Кара свойството да използва стойността си по подразбиране.
+- **inherit** - Наследява свойството от родителския елемент.
+
+---
+
+<HtmlPlayground code = {`
+<style>
+p {
+      text-indent: 100px;
+      line-height: 24px;
+      font-size: 16px;
+      letter-spacing: 5px;
+}
+h3 {
+      letter-spacing: -1px;
+}
+</style>
+
+<h2>Example of letter-spacing property</h2>
+<p>
+  Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's De Finibus Bonorum et Malorum for use in a type specimen book.
+</p>
+<h3>
+  Here is some text with letter-spacing property.
+</h3>
+`} />
+
+---
+
+### Line Height
+
+Свойството `line-height` определя височината на реда. Използва се за задаване на водещите редове на текст. Ако стойността на line-height е по-голяма от стойността на font-size на елемент, разликата ще бъде водещата точка на текста. Ето стойностите, поддържани от това свойство:
+
+- **normal** - Определя нормална височина на реда. Това е стойността по подразбиране на това свойство.
+- **length** - Определя фиксирана височина на реда в px, cm и др.
+- **number** - Определя число, което се умножава по текущия размер на шрифта, за да се зададе височината на реда.
+- **%** - Определя височината на реда в проценти от текущия размер на шрифта.
+- **initial** - Кара свойството да използва стойността си по подразбиране.
+- **inherit** - Наследява свойството от родителския елемент.
+
+:::note
+Числова стойност без мерни единици (например line-height: 1.5) обикновено е най-безопасният избор, защото се мащабира със собствения размер на шрифта на всеки елемент и избягва изненади при наследяване.
+:::
+
+---
+
+<HtmlPlayground code = {`
+<style>
+p {
+      line-height: 30px;
+}
+h3 {
+      line-height: 1;
+}
+</style>
+ 
+<h2>Example of line-height property</h2>
+<p> Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's De Finibus Bonorum et Malorum for use in a type specimen book. </p>
+<h3>
+  Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's De Finibus Bonorum et Malorum for use in a type specimen book.
+</h3> 
+`} />
+
+---
+
+### Word Spacing
+
+С помощта на свойството `word-spacing` можем да променяме разстоянието между думите в текст, а не отделните символи. Поддържа следните стойности:
+
+- **normal** - Определя нормално разстояние между думите. Това е стойността по подразбиране на това свойство.
+- **length** - Определя допълнително разстояние между думите. Може да се зададе в px, pt, cm, em и др. Отрицателните стойности са валидни.
+- **initial** - Кара свойството да използва стойността си по подразбиране.
+- **inherit** - Наследява свойството от родителския елемент.
+
+---
+
+<HtmlPlayground code = {`
+<style>
+p {
+      word-spacing: 1em;
+}
+h3 {
+      word-spacing: -3px;
+}
+span {
+      display: block;
+      word-spacing: 3rem;
+}
+</style>
+
+<h2>Example of word-spacing property</h2>
+<p>
+  Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's De Finibus Bonorum et Malorum for use in a type specimen book.
+</p>
+<h3>
+  Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's De Finibus Bonorum et Malorum for use in a type specimen book.
+</h3>
+<span>
+Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs.
+</span>
 `} />
 
 ---
