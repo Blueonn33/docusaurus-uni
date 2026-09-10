@@ -1,3 +1,5 @@
+import HtmlPlayground from '@site/src/components/HtmlPlayground';
+
 # Стилове за позициониране
 
 Позиционирането ви позволява да извадите елементи от нормалния поток на документа и да ги накарате да се държат по различен начин, например да се разполагат един върху друг или винаги да остават на едно и също място. **[[1]](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Positioning)**
@@ -50,3 +52,31 @@ Margin area разширява border областта, за да включи �
 Размерът на margin областта се определя от свойствата margin-top, margin-right, margin-bottom, margin-left и съкратеното обозначение на **[margin](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/margin)**. Когато се случи свиване margin, областта на margin-a не е ясно дефинирана, тъй като margin-a се споделя между кутиите.
 
 При inline elements (вградени елементи), количеството заето пространство (приносът към височината на реда) се определя от свойството **line-height**, въпреки че border и paddings все още се показват около съдържанието.
+
+---
+
+## Показване на елементи (display)
+
+CSS свойството **display** определя дали даден елемент се третира като **block** (блок) или **inline** (вграден), както и оформлението, използвано за неговите деца, като например **flow**, **grid** или **flex**. **[[3]](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/display)**
+
+Свойството display задава вътрешния и външния начин на показване на елемента. Външният тип задава участието на елемента във **[flow оформлението]](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Display/Flow_layout)**; вътрешният тип задава оформлението на децата. Някои стойности на display са напълно дефинирани в техните собствени индивидуални спецификации.
+
+### display: inline
+
+Стойността по подразбиране за елементите. Помислете за елементи като `<span>`, `<em>` или `<b>` и как обгръщането на текст в тези елементи не нарушава потока на текста. **[[4]](https://css-tricks.com/almanac/properties/d/display/)**
+
+<HtmlPlayground code = {`
+<style>
+em {
+        display: inline;
+        border: 1px solid red;
+}
+</style>
+
+<p>Lorem ipsum dolor sit amet, <em>consectetur</em> adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+`} />
+
+Елементът `<em>` има червена рамка от 1px. Обърнете внимание, че е разположен точно на една линия с останалия текст.
+
+Inline елементите приемат margin и padding, но те остават разположени на една линия. Margin и padding ще изместят другите елементи само хоризонтално, а не вертикално.
+
