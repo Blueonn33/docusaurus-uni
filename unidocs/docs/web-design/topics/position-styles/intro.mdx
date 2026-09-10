@@ -1,2 +1,52 @@
 # Стилове за позициониране
 
+Позиционирането ви позволява да извадите елементи от нормалния поток на документа и да ги накарате да се държат по различен начин, например да се разполагат един върху друг или винаги да остават на едно и също място. **[[1]](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Positioning)**
+
+## CSS box model
+
+CSS модулът **box model (кутиен модел)** определя свойствата **margin** и **padding**, които заедно със свойствата **height**, **width** и **border** съставляват CSS box model.
+
+Всеки видим елемент в една уеб страница е кутия, разположена според модела за визуално форматиране. CSS свойствата определят техния размер, позиция и ниво на подреждане, като свойствата на box model (и други) определят външния размер на всяка кутия и пространството около тях.
+
+Всяка кутия има правоъгълна област за съдържание, вътре в която се показва текст, изображения и друго съдържание. Съдържанието може да бъде заобиколено от padding, border и margin от едната или повече страни. 
+
+- Padding е около съдържанието.
+- Border е около padding-а.
+- Margin е извън границата. 
+
+Box model описва как тези характеристики - съдържанието, padding, border и margin - работят заедно, за да създадат кутия. **[[2]](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Box_model)**
+
+<img
+  src="https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Box_model/boxmodel.png"
+  alt="box model"
+  width={700}
+  style={{ border: "1px solid #461364" }}
+/>
+
+### Content area
+
+Content area (областта на съдържанието), съдържа **реалното** съдържание на елемента като текст, изображение, видеоплейър и др. Размерите ѝ са ширината на съдържанието (или ширината на полето за съдържание) и височината на съдържанието (или височината на полето за съдържание). Често има цвят на фона или фоново изображение.
+
+Ако свойството **box-sizing** е зададено на **content-box** (по подразбиране) и ако елементът е блоков елемент, размерът на областта на съдържанието може да бъде изрично дефиниран със свойствата width, min-width, max-width, height, min-height и max-height.
+
+### Padding area
+
+Padding area разширява областта на съдържанието, за да включи padding-a на елемента. Неговите размери са ширината на padding кутията и височината на padding кутията. 
+
+Дебелината на padding-a се определя от свойствата padding-top, padding-right, padding-bottom, padding-left и **[[padding]](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/padding)**, който е съкратеният запис за изписване на свойствата.
+
+### Border area
+
+Border area (граничната област) разширява padding областта, за да включи border-a на елемента. Нейните размери са ширината на border-box и височината на border-box.
+
+Дебелината на границите се определя от свойствата **[border-width](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/border-width)** и съкратеното **[border](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/border)**. 
+
+Ако свойството **box-sizing** е зададено на **border-box**, размерът на граничната област може да бъде изрично дефиниран със свойствата width, min-width, max-width, height, min-height и max-height. Когато на кутията е зададен фон (background-color или background-image), той се простира до външния ръб на границата. Това поведение по подразбиране може да се промени с CSS свойството background-clip.
+
+### Margin area
+
+Margin area разширява border областта, за да включи празна област, използвана за отделяне на елемента от неговите съседи. Нейните размери са ширината на margin box и височината на margin box.
+
+Размерът на margin областта се определя от свойствата margin-top, margin-right, margin-bottom, margin-left и съкратеното обозначение на **[margin](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/margin)**. Когато се случи свиване margin, областта на margin-a не е ясно дефинирана, тъй като margin-a се споделя между кутиите.
+
+При inline elements (вградени елементи), количеството заето пространство (приносът към височината на реда) се определя от свойството **line-height**, въпреки че border и paddings все още се показват около съдържанието.
