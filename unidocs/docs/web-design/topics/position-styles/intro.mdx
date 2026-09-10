@@ -65,6 +65,8 @@ CSS свойството **display** определя дали даден еле
 
 Стойността по подразбиране за елементите. Помислете за елементи като `<span>`, `<em>` или `<b>` и как обгръщането на текст в тези елементи не нарушава потока на текста. **[[4]](https://css-tricks.com/almanac/properties/d/display/)**
 
+---
+
 <HtmlPlayground code = {`
 <style>
 em {
@@ -73,10 +75,209 @@ em {
 }
 </style>
 
-<p>Lorem ipsum dolor sit amet, <em>consectetur</em> adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+<p>Lorem ipsum dolor sit amet, <em>inline element</em> adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
 `} />
+
+---
 
 Елементът `<em>` има червена рамка от 1px. Обърнете внимание, че е разположен точно на една линия с останалия текст.
 
 Inline елементите приемат margin и padding, но те остават разположени на една линия. Margin и padding ще изместят другите елементи само хоризонтално, а не вертикално.
 
+---
+
+<HtmlPlayground code = {`
+<style>
+em {
+        display: inline;
+        border: 1px solid red;
+        background-color: red;
+        margin: 20px;
+        padding: 20px;
+}
+</style>
+
+<p>Lorem ipsum dolor sit amet, <em>inline element</em> adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+`} />
+
+---
+
+Вграденият елемент няма да приема височина и ширина. Той просто ще ги игнорира.
+
+### display: inline-block
+
+Елемент, зададен като inline-block, е много подобен на inline, тъй като ще се постави в съответствие с естествения поток на текста (върху **базовата линия**). Разликата е, че можете да зададете ширина и височина, които ще се спазват.
+
+---
+
+<HtmlPlayground code = {`
+<style>
+em {
+        display: inline-block;
+        border: 1px solid red;
+        background-color: red;
+        margin: 20px;
+        padding: 20px;
+        height: 20px;
+}
+</style>
+
+<p>Lorem ipsum dolor sit amet, <em>inline element</em> adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+`} />
+
+---
+
+### display: block
+
+Редица елементи за зададени да бъдат block (блокови). Те обикновено са контейнерни елементи, като `<div>`, `<section>` и `<ul>`. Също така текстови блокове като `<p>` и `<h1>`. Блоковите елементи пречупват съдържанието около себе си. По подразбиране (без задаване на ширина) те заемат колкото е възможно повече хоризонтално пространство.
+
+---
+
+<HtmlPlayground code = {`
+<style>
+p {
+        display: block;
+        border: 1px solid red;
+}
+</style>
+
+<p>Lorem ipsum dolor sit amet, adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+
+<em>inline element</em>
+
+<p>Lorem ipsum dolor sit amet, adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+`} />
+
+---
+
+Елементите `<p>` са блокови елементи. Елементът `<em>` е вграден, но двата `<p>` го принуждават да заеме цял ред.
+
+## Flexbox
+
+Модулът Flexbox Layout (Flexible Box) предоставя по-ефективен начин за оформление, подравняване и разпределение на пространството между елементите в контейнер, дори когато размерът им е неизвестен и/или динамичен (оттук и думата „flex“).
+
+Основната идея зад flex оформлението е да се даде възможност на контейнера да променя ширината/височината (и реда) на елементите си, за да запълни най-добре наличното пространство (най-вече за да се приспособи към всички видове размери на екраните). Flex контейнерът разширява елементите, за да запълни наличното свободно пространство, или ги свива, за да предотврати препълване.
+
+Най-важното е, че flexbox оформлението е независимо от посоката, за разлика от обикновените оформления (блоково, което е вертикално базирано, и вградено, което е хоризонтално базирано). Въпреки че те работят добре за страници, им липсва гъвкавост, за да поддържат големи или сложни приложения (особено когато става въпрос за промяна на ориентацията, преоразмеряване, разтягане, свиване и т.н.). **[[4]](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)**
+
+### Flexbox Терминология
+
+Тъй като flexbox е цял модул, а не отделно свойство, той включва много неща, включително целия си набор от свойства. Някои от тях са предназначени да бъдат зададени на контейнера (родителски елемент, известен като „flex контейнер“), докато други са предназначени да бъдат зададени на децата (наричани „flex елементи“).
+
+Ако обикновеното оформление е базирано както на блокови, така и на вградени посоки на потока, flex оформлението е базирано на **flex-flow посоки**.
+
+<img
+  src="https://css-tricks.com/wp-content/uploads/2018/11/00-basic-terminology.svg"
+  alt="flex box terminology"
+  width={700}
+  style={{ border: "1px solid #461364" }}
+/>
+
+Елементите ще бъдат разположени или по **main axis (главната ос)** от основното начало до основното крайно положение, или по **cross axis (напречната ос)** от напречното начало до напречното крайно положение.
+
+### Flexbox Properties
+
+### Properties за родителя (Flex Container)
+
+<img
+  src="https://css-tricks.com/wp-content/uploads/2018/10/01-container.svg"
+  alt="flexbox container"
+  width={400}
+  style={{ border: "1px solid #461364" }}
+/>
+
+#### display
+
+Това дефинира flex контейнер; вграден или блоков в зависимост от дадената стойност. Той позволява flex контекст за всички негови директни деца.
+
+```css
+.container {
+        display: flex; /* or inline-flex */
+}
+```
+
+#### flex-direction
+
+<img
+  src="https://css-tricks.com/wp-content/uploads/2018/10/flex-direction.svg"
+  alt="flex-direction"
+  width={400}
+  style={{ border: "1px solid #461364" }}
+/>
+
+Това установява main axis, като по този начин определя посоката, в която flex елементи се поставят във flex контейнер. Flexbox е концепция за оформление в една посока. Мислете за flex елементите като за разположени предимно в хоризонтални редове или вертикални колони.
+
+```css
+.container {
+        flex-direction: row | row-reverse | column | column-reverse;
+}
+```
+
+#### flex-wrap
+
+<img
+  src="https://css-tricks.com/wp-content/uploads/2018/10/flex-wrap.svg"
+  alt="flex-wrap"
+  width={400}
+  style={{ border: "1px solid #461364" }}
+/>
+
+По подразбиране, flex елементите ще се опитат да се поберат на един ред. Можете да промените това и да позволите на елементите да преминават на нов ред, когато е необходимо, с това свойство.
+
+```css
+.container {
+        flex-wrap: nowrap | wrap | wrap-reverse;
+}
+```
+
+#### flex-flow
+
+Това е съкратен запис за свойствата **flex-direction** и **flex-wrap**, които заедно определят main и cross axis на flex контейнера. Стойността по подразбиране е **row nowrap**.
+
+```css
+.container {
+        flex-flow: column wrap;
+}
+```
+
+#### justify-content
+
+<img
+  src="https://css-tricks.com/wp-content/uploads/2018/10/justify-content.svg"
+  alt="justify-content"
+  width={400}
+  style={{ border: "1px solid #461364" }}
+/>
+
+Това определя подравняването по main axis. Помага за разпределянето на допълнителното свободно пространство, когато всички flex елементи на даден ред са inflexible или са flexible, но са достигнали максималния си размер. Също така упражнява известен контрол върху подравняването на елементите, когато те преливат реда.
+
+```css
+.container {
+        justify-content: flex-start | flex-end | center | space-between | space-around | space-evenly | start | end | left | right ... + safe | unsafe;
+}
+```
+
+:::info
+Има и две допълнителни ключови думи, които можете да използвате с тези стойности: **safe** и **unsafe**. Използването на safe гарантира, че независимо от това как се позиционира този тип, не можете да преместите елемент така, че той да се изобрази извън екрана по начин, по който съдържанието не може да се скролва (нарича се **загуба на данни**).
+:::
+
+#### align-items
+
+<img
+  src="https://css-tricks.com/wp-content/uploads/2018/10/align-items.svg"
+  alt="align-items"
+  width={400}
+  style={{ border: "1px solid #461364" }}
+/>
+
+Това определя поведението по подразбиране за това как flex елементи се разполагат по cross axis на текущия ред. Мислете за това като за justify-content подравняване на съдържанието, но за cross axis (перпендикулярно на main axis).
+
+```css
+.container {
+        align-items: stretch | flex-start | flex-end | center | baseline | first baseline | last baseline | start | end | self-start | self-end + ... safe | unsafe;
+}
+```
+
+:::info
+Ключовите думи **safe** и **unsafe** могат да се използват заедно с всички останали ключови думи.
+:::
