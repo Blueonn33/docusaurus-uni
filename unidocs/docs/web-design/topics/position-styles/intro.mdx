@@ -1109,6 +1109,157 @@ Most words are short & don't need to break. But <strong>Antidisestablishmentaria
 
 ---
 
-:::warning
-поток на текст - flow
-:::
+### float
+
+CSS свойството `float` позиционира елемент от лявата или дясната страна на неговия контейнер, позволявайки на текста и вградените (inline) елементи да го обгръщат. Елементът се изважда от нормалния поток на страницата, но въпреки това остава част от него (за разлика от абсолютното позициониране). **[[12]](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/float)**
+
+Стойности:
+- **left** - Елементът трябва да плава (float) от лявата страна на своя обгръщащ блок.
+
+---
+
+<HtmlPlayground code={`
+<style>
+.float {
+        color: white;
+        background-color: darkblue;
+        border: 10px solid indigo;
+        width: 70px;
+        padding: 10px;
+        float: left;
+}
+</style>
+
+<div class="float">
+Float me
+</div>
+
+<div>
+As much mud in the streets as if the waters had but newly retired from the face of the earth, and it would not be wonderful to meet a Megalosaurus, forty feet long or so, waddling like an elephantine lizard up Holborn Hill.
+</div>
+`} />
+
+---
+
+- **right** - Елементът трябва да плава (float) от дясната страна на своя обгръщащ блок.
+
+---
+
+<HtmlPlayground code={`
+<style>
+.float {
+        color: white;
+        background-color: darkblue;
+        border: 10px solid indigo;
+        width: 70px;
+        padding: 10px;
+        float: right;
+}
+</style>
+
+<div class="float">
+Float me
+</div>
+
+<div>
+As much mud in the streets as if the waters had but newly retired from the face of the earth, and it would not be wonderful to meet a Megalosaurus, forty feet long or so, waddling like an elephantine lizard up Holborn Hill.
+</div>
+`} />
+
+---
+
+- **none** - Елементът не трябва да плава (float).
+
+---
+
+<HtmlPlayground code={`
+<style>
+.float {
+        color: white;
+        background-color: darkblue;
+        border: 10px solid indigo;
+        width: 70px;
+        padding: 10px;
+        float: none;
+}
+</style>
+
+<div class="float">
+Float me
+</div>
+
+<div>
+As much mud in the streets as if the waters had but newly retired from the face of the earth, and it would not be wonderful to meet a Megalosaurus, forty feet long or so, waddling like an elephantine lizard up Holborn Hill.
+</div>
+`} />
+
+---
+
+- **inline-start** - Елементът трябва да плава (float) от началната страна на своя обгръщащ блок. Това е лявата страна при системи за писане от ляво надясно (ltr) и дясната страна при системи за писане от дясно наляво (rtl).
+
+---
+
+<HtmlPlayground code={`
+<style>
+.float {
+        color: white;
+        background-color: darkblue;
+        border: 10px solid indigo;
+        width: 70px;
+        padding: 10px;
+        float: inline-start;
+}
+</style>
+
+<div class="float">
+Float me
+</div>
+
+<div>
+As much mud in the streets as if the waters had but newly retired from the face of the earth, and it would not be wonderful to meet a Megalosaurus, forty feet long or so, waddling like an elephantine lizard up Holborn Hill.
+</div>
+`} />
+
+---
+
+- **inline-end** - Елементът трябва да плава (float) от крайната страна на своя обгръщащ блок. Това е дясната страна при системи за писане от ляво надясно (ltr) и лявата страна при системи за писане от дясно наляво (rtl).
+
+---
+
+<HtmlPlayground code={`
+<style>
+.float {
+        color: white;
+        background-color: darkblue;
+        border: 10px solid indigo;
+        width: 70px;
+        padding: 10px;
+        float: inline-end;
+}
+</style>
+
+<div class="float">
+Float me
+</div>
+
+<div>
+As much mud in the streets as if the waters had but newly retired from the face of the earth, and it would not be wonderful to meet a Megalosaurus, forty feet long or so, waddling like an elephantine lizard up Holborn Hill.
+</div>
+`} />
+
+---
+
+## Използвана литература
+
+- ### [MDN Web Dev - CSS layout](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Positioning)
+- ### [MDN Web Dev - Box model](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Box_model)
+- ### [MDN Web Dev - Display](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/display)
+- ### [CSS Tricks - Display](https://css-tricks.com/almanac/properties/d/display/)
+- ### [CSS Tricks - Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+- ### [CSS Tricks - Grid](https://css-tricks.com/complete-guide-css-grid-layout/)
+- ### [CSS Tricks - Gap](https://css-tricks.com/almanac/properties/g/gap/)
+- ### [W3Schools - position static/relative](https://www.w3schools.com/css/css_position.asp)
+- ### [W3Schools - position fixed/absolute](https://www.w3schools.com/css/css_positioning_fixed_absolute.asp)
+- ### [W3Schools - position sticky](https://www.w3schools.com/css/css_positioning_sticky.asp)
+- ### [MDN Web Docs - overflow-wrap](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/overflow-wrap)
+- ### [MDN Web Docs - float](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/float)
