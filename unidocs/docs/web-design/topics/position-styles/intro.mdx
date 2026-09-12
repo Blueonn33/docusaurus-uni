@@ -1029,7 +1029,85 @@ div.sticky {
 
 ## Поток на текста
 
+Свързано е с това как текстът и inline елементите се подреждат, пренасят и взаимодействат в нормалния документен поток. 
 
+### overflow-wrap
+
+CSS свойството `overflow-wrap` се прилага към текст и определя дали браузърът трябва да вмъква пренасяне на нов ред в иначе непрекъсваема поредица от символи, за да предотврати излизането на текста извън границите на неговия ред (line box). **[[11]](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/overflow-wrap)**
+
+:::note
+Първоначално свойството е било нестандартно разширение на Microsoft без префикс, наречено `word-wrap`, и е било реализирано от повечето браузъри под същото име. Впоследствие е преименувано на `overflow-wrap`, като `word-wrap` се запазва като негов псевдоним.
+:::
+
+Стойности:
+- **normal** - Редовете могат да се пренасят само на стандартните места за разделяне на думи (например интервал между две думи).
+
+---
+
+<HtmlPlayground code={`
+<style>
+div {
+        overflow-wrap: normal;
+        width: min-content;
+        background-color: lavender;
+        border: 1px solid indigo;
+        padding: 5px;
+        max-width: 11em;
+}
+</style>
+
+<div>
+Most words are short & don't need to break. But <strong>Antidisestablishmentarianism</strong> is long. The width is set to min-content, with a max-width of 11em.
+</div>
+`} />
+
+---
+
+- **anywhere** - За да се предотврати преливане, поредица от знаци, която иначе не би се разделила (като дълга дума или URL адрес), може да бъде прекъсната във всяка точка, ако в реда липсват други допустими места за пренасяне. На мястото на прекъсването не се добавя знак за сричкопренасяне (тире). Възможностите за пренасяне, възникнали вследствие на това разделяне на думата, се вземат предвид при изчисляването на вътрешните размери от типа **min-content**.
+
+---
+
+<HtmlPlayground code={`
+<style>
+div {
+        overflow-wrap: anywhere;
+        width: min-content;
+        background-color: lavender;
+        border: 1px solid indigo;
+        padding: 1rem;
+        max-width: 11em;
+}
+</style>
+
+<div>
+Most words are short & don't need to break. But <strong>Antidisestablishmentarianism</strong> is long. The width is set to min-content, with a max-width of 11em.
+</div>
+`} />
+
+---
+
+- **break-word** - Същото като стойността **anywhere** – позволява се разделяне на думи, които обикновено не се пренасят, на произволни места, ако в реда липсват други допустими точки за пренасяне; разликата е, че възможностите за пренасяне, възникнали вследствие на това разделяне, НЕ се вземат предвид при изчисляването на вътрешните размери от типа **min-content**.
+
+---
+
+<HtmlPlayground code={`
+<style>
+div {
+        overflow-wrap: break-word;
+        width: min-content;
+        background-color: lavender;
+        border: 1px solid indigo;
+        padding: 1rem;
+        max-width: 11em;
+}
+</style>
+
+<div>
+Most words are short & don't need to break. But <strong>Antidisestablishmentarianism</strong> is long. The width is set to min-content, with a max-width of 11em.
+</div>
+`} />
+
+---
 
 :::warning
 поток на текст - flow
