@@ -158,7 +158,7 @@ p {
 
 Основната идея зад flex оформлението е да се даде възможност на контейнера да променя ширината/височината (и реда) на елементите си, за да запълни най-добре наличното пространство (най-вече за да се приспособи към всички видове размери на екраните). Flex контейнерът разширява елементите, за да запълни наличното свободно пространство, или ги свива, за да предотврати препълване.
 
-Най-важното е, че flexbox оформлението е независимо от посоката, за разлика от обикновените оформления (блоково, което е вертикално базирано, и вградено, което е хоризонтално базирано). Въпреки че те работят добре за страници, им липсва гъвкавост, за да поддържат големи или сложни приложения (особено когато става въпрос за промяна на ориентацията, преоразмеряване, разтягане, свиване и т.н.). **[[4]](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)**
+Най-важното е, че flexbox оформлението е независимо от посоката, за разлика от обикновените оформления (блоково, което е вертикално базирано, и вградено, което е хоризонтално базирано). Въпреки че те работят добре за страници, им липсва гъвкавост, за да поддържат големи или сложни приложения (особено когато става въпрос за промяна на ориентацията, преоразмеряване, разтягане, свиване и т.н.). **[[5]](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)**
 
 ### Flexbox Терминология
 
@@ -431,3 +431,606 @@ p {
         align-self: auto | flex-start | flex-end | center | baseline | stretch;
 }
 ```
+
+## Grid
+
+CSS Grid Layout (известен още като **Grid** или **CSS Grid**) е двуизмерна система за оформление, базирана на grid (мрежа), която – в сравнение с всички досегашни системи за уеб оформление – напълно променя начина, по който проектираме потребителски интерфейси. CSS винаги се е използвал за подредбата на уеб страници, но никога не се е справял особено добре с тази задача. Първоначално използвахме таблици, след това плаващи елементи (floats), позициониране и inline-block, но всички тези методи по същество бяха заобиколни решения и лишаваха разработчиците от редица важни функционалности (като например вертикалното центриране).
+
+CSS Flexbox също е отличен инструмент за оформление, но неговият еднопосочен поток е подходящ за други сценарии на употреба – а всъщност двата инструмента си взаимодействат чудесно! CSS Grid е първият CSS модул, създаден специално за решаване на проблемите с оформлението, които сме се опитвали да заобикаляме с различни трикове през цялото време, откакто съществува уеб разработката. **[[6]](https://css-tricks.com/complete-guide-css-grid-layout/)**
+
+### Grid Терминология
+
+#### grid container
+
+Елементът, върху който е приложено свойството `display: grid`. Той е прекият родител на всички елементи в мрежата (grid items). В този пример `container` е grid контейнерът.
+
+```html
+<div class="container">
+  <div class="item item-1"> </div>
+  <div class="item item-2"> </div>
+  <div class="item item-3"> </div>
+</div>
+```
+
+#### grid item
+
+Децата (т.е. преките наследници) на grid контейнера. В случая items са grid елементи (grid items), докато sub-item не е такъв.
+
+```html
+<div class="container">
+        <div class="item"> </div>
+        <div class="item">
+                <p class="sub-item"> </p>
+        </div>
+        <div class="item"> </div>
+</div>
+```
+
+#### grid line
+
+Разделителните линии, които изграждат структурата на grid. Те могат да бъдат вертикални (линии на grid за колони) или хоризонтални (линии на grid за редове) и се намират от двете страни на съответния ред или колона. Тук жълтата линия е пример за линия на grid за колони.
+
+<img
+  src="https://css-tricks.com/wp-content/uploads/2018/11/terms-grid-line.svg"
+  alt="grid line"
+  width={400}
+  style={{ border: "1px solid #461364" }}
+/>
+
+#### grid track
+
+Пространството между две съседни линии на grid. Можете да ги разглеждате като колоните или редовете на grid. Ето я пътеката на grid между втората и третата линия на редовете.
+
+<img
+  src="https://css-tricks.com/wp-content/uploads/2021/08/terms-grid-track.svg"
+  alt="grid track"
+  width={400}
+  style={{ border: "1px solid #461364" }}
+/>
+
+#### grid area
+
+Общата площ, оградена от четири grid линии. Една grid зона може да се състои от произволен брой grid клетки. Ето grid зона между grid линии за редове 1 и 3 и grid линии за колони 1 и 3.
+
+<img
+  src="https://css-tricks.com/wp-content/uploads/2018/11/terms-grid-area.svg"
+  alt="grid area"
+  width={400}
+  style={{ border: "1px solid #461364" }}
+/>
+
+#### grid cell
+
+Пространството между две съседни grid линии за редове и две съседни линии за колони. Това е **unit (единица)** от grid. Ето клетката от grid, разположена между линиите за редове 1 и 2 и линиите за колони 2 и 3.
+<img
+  src="https://css-tricks.com/wp-content/uploads/2018/11/terms-grid-cell.svg"
+  alt="grid cell"
+  width={400}
+  style={{ border: "1px solid #461364" }}
+/>
+
+### Grid Properties
+
+### Properties за родителя (Grid Container)
+
+<img
+  src="https://css-tricks.com/wp-content/uploads/2018/10/01-container.svg"
+  alt="grid cell"
+  width={400}
+  style={{ border: "1px solid #461364" }}
+/>
+
+#### display
+
+Дефинира елемента като grid container и установява нов контекст на форматиране чрез grid за неговото съдържание.
+
+Стойности:
+- **grid** - Създава block-level grid.
+- **inline-grid** - Създава inline-level grid.
+
+```css
+.container {
+        display: grid | inline-grid;
+}
+```
+
+#### grid-template-*
+
+Дефинира колоните и редовете на grid чрез списък от стойности, разделени с интервали. Стойностите представляват размера на пътеките, а интервалите между тях – grid линиите.
+
+Стойности:
+- `<track-size>` - Може да бъде дължина, процент или (fraction) част от свободното пространство в grid чрез използване на единицата **fr**.
+- `<line-name>` - Произволно име по ваш избор.
+
+```css
+.container {
+        grid-template-columns: ...  ...;
+        /* e.g. 
+        1fr 1fr
+        minmax(10px, 1fr) 3fr
+        repeat(5, 1fr)
+        50px auto 100px 1fr
+        */
+        grid-template-rows: ... ...;
+        /* e.g. 
+        min-content 1fr min-content
+        100px 1fr max-content
+        */
+}
+```
+
+На grid линиите автоматично се присвояват положителни числа въз основа на тези зададени стойности (като -1 е алтернатива за самия последен ред).
+
+<img
+  src="https://css-tricks.com/wp-content/uploads/2018/11/template-columns-rows-01.svg"
+  alt="grid cell"
+  width={400}
+  style={{ border: "1px solid #461364" }}
+/>
+
+#### grid-template-areas
+
+Дефинира grid шаблон чрез препратка към имената на зоните в нея, зададени с помощта на свойството `grid-area`. Повтарянето на името на дадена зона кара съдържанието да обхване съответните клетки. Точката обозначава празна клетка. Самият синтаксис осигурява визуализация на структурата на grid.
+
+Стойности
+- `<grid-area-name>` - Името на grid площ, зададено чрез grid-area.
+- **.** - Точката обозначава празна клетка от grid.
+- **none** - Не са дефинирани grid площи.
+
+```css
+.container {
+        grid-template-areas: 
+        "<grid-area-name> | . | none | ..."
+        "...";
+}
+```
+
+```css
+.item-a {
+        grid-area: header;
+}
+.item-b {
+        grid-area: main;
+}
+.item-c {
+        grid-area: sidebar;
+}
+.item-d {
+        grid-area: footer;
+}
+
+.container {
+        display: grid;
+        grid-template-columns: 50px 50px 50px 50px;
+        grid-template-rows: auto;
+        grid-template-areas: 
+        "header header header header"
+        "main main . sidebar"
+        "footer footer footer footer";
+}
+```
+
+Това ще създаде grid с четири колони и три реда. Целият най-горен ред ще бъде зает от областта на заглавната част (header). Средният ред ще се състои от две основни зони (main), една празна клетка и една зона за странична лента (sidebar). Последният ред изцяло представлява долната част (footer).
+
+<img
+  src="https://css-tricks.com/wp-content/uploads/2018/11/dddgrid-template-areas.svg"
+  alt="grid-template-areas"
+  width={400}
+  style={{ border: "1px solid #461364" }}
+/>
+
+:::note
+Всеки ред във вашата декларация трябва да има еднакъв брой клетки.
+:::
+
+#### justify-items
+
+Подравнява grid елементите по оста „inline“ (ред) – за разлика от `align-items`, който ги подравнява по оста „block“ (колона). Тази стойност се прилага за всички grid елементи в контейнера.
+
+Стойности
+- **stretch (по подразбиране)**: Запълва цялата ширина на клетката.
+- **start** - Подравнява елементите така, че да са плътно до началния ръб на клетката им.
+- **end** - Подравнява елементите така, че да са плътно до крайния ръб на клетката им.
+- **center** - Подравнява елементите в центъра на клетката им.
+
+```css
+.container {
+        justify-items: start | end | center | stretch;
+}
+```
+
+#### align-items
+
+Подравнява grid елементите по оста на блока (колоната) – за разлика от `justify-items`, който ги подравнява по оста на реда (inline оста). Тази стойност се прилага за всички grid елементи в контейнера.
+
+Стойности:
+- **stretch (по подразбиране)** - Запълва цялата височина на клетката.
+- **start** - Подравнява елементите плътно към началния ръб на клетката.
+- **end** - Подравнява елементите плътно към крайния ръб на клетката.
+- **center** - Подравнява елементите в центъра на клетката.
+- **baseline** - Подравнява елементите спрямо базовата линия на текста. Съществуват модификатори за базовата линия – **first baseline** (първа базова линия) и **last baseline** (последна базова линия), които използват базовата линия съответно на първия или последния ред при многоредов текст.
+
+```css
+.container {
+        align-items: start | end | center | stretch;
+}
+```
+
+#### justify-content
+
+Понякога общият размер на вашия grid може да бъде по-малък от размера на неговия grid контейнер. Това може да се случи, ако всички елементи в grid са с размери, зададени чрез non-flexible единици като пиксели (px). В такъв случай можете да зададете подравняването на grid спрямо контейнера. Това свойство подравнява grid по оста на редовете (inline axis) – за разлика от свойството `align-content`, което подравнява grid по оста на колоните (block axis).
+
+Стойности
+- **start** - Подравнява grid плътно към началния ръб на grid контейнера.
+- **end** - Подравнява grid плътно към крайния ръб на grid контейнера.
+- **center** - Подравнява grid в центъра на grid контейнера.
+- **stretch** - Променя размера на grid елементите, така че да бъде запълнена цялата ширина на контейнера.
+- **space-around** - Разпределя равно разстояние между отделните grid елементи, като в двата края се оставя разстояние с наполовина по-малък размер.
+- **space-between** - Разпределя равно разстояние между отделните grid елементи, без да се оставя разстояние в двата края.
+- **space-evenly** - Разпределя равно разстояние между отделните grid елементи, включително в двата края.
+
+```css
+.container {
+        justify-content: start | end | center | stretch | space-around | space-between | space-evenly;    
+}
+```
+
+#### align-content
+
+Понякога общият размер на вашия grid може да бъде по-малък от размера на grid контейнера. Това може да се случи, ако всички grid елементи са с размери, зададени чрез non-flexible единици като пиксели (px). В такъв случай можете да зададете подравняването на grid спрямо контейнера. Това свойство подравнява grid по оста на блоковете (колоните) – за разлика от `justify-content`, което подравнява grid по оста на редовете (inline оста).
+
+- **start** - Подравнява grid плътно към началния ръб на grid контейнера.
+- **end** - Подравнява grid плътно към крайния ръб на grid контейнера.
+- **center** - Подравнява grid в центъра на grid контейнера.
+- **stretch** - Променя размера на grid елементите, така че цялата височина на контейнера да бъде запълнена.
+- **space-around** - Разпределя равно разстояние между отделните grid елементи, като в двата края се оставя разстояние с наполовина по-малък размер.
+- **space-between** - Разпределя равно разстояние между отделните grid елементи, без да се оставя разстояние в двата края.
+- **space-evenly** - Разпределя равно разстояние между отделните grid елементи, включително в двата края.
+
+```css
+.container {
+        align-content: start | end | center | stretch | space-around | space-between | space-evenly;    
+}
+```
+
+#### gap
+
+Свойството `gap` в CSS е съкратен запис за `row-gap` и `column-gap`, който определя размера на разстоянията между редовете и колоните в оформления тип CSS Grid и Flexbox. **[[7]](https://css-tricks.com/almanac/properties/g/gap/)**
+
+```css
+/* Grid layout */
+.container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 1fr 2fr 1fr;
+        gap: 30px 20px;
+}
+
+/* Flex layout */
+.container {
+        display: flex;
+        gap: 10%;
+}
+```
+
+<img
+  src="https://i0.wp.com/css-tricks.com/wp-content/uploads/2020/08/DKNteyUQ.png?w=1208&ssl=1"
+  alt="gap"
+  width={600}
+  style={{ border: "1px solid #461364" }}
+/>
+
+### Properties за децата (Grid Items)
+
+#### grid-column-* / grid-row-*
+
+Определя местоположението на grid елемент чрез препратка към конкретни grid линии. `grid-column-start`/`grid-row-start` е линията, от която елементът започва, а `grid-column-end`/`grid-row-end` е линията, на която елементът завършва.
+
+Стойности:
+- `<line>` - Може да бъде число, указващо номерирана grid линия, или име, указващо именувана grid линия.
+- **span** `<number>` - Елементът ще обхваща посочения брой grid пътеки.
+- **span** `<name>` - Елементът ще се разпростира, докато достигне следващата линия с посоченото име.
+- **auto** - Указва автоматично разполагане, автоматичен обхват или обхват по подразбиране от една единица.
+
+```css
+.item {
+        grid-column-start: <number> | <name> | span <number> | span <name> | auto;
+        grid-column-end: <number> | <name> | span <number> | span <name> | auto;
+        grid-row-start: <number> | <name> | span <number> | span <name> | auto;
+        grid-row-end: <number> | <name> | span <number> | span <name> | auto;
+}
+```
+
+Пример
+```css
+.item-a {
+        grid-column-start: 2;
+        grid-column-end: five;
+        grid-row-start: row1-start;
+        grid-row-end: 3;
+}
+```
+
+<img
+  src="https://css-tricks.com/wp-content/uploads/2018/11/grid-column-row-start-end-01.svg"
+  alt="grid-column/row"
+  width={600}
+  style={{ border: "1px solid #461364" }}
+/>
+
+#### justify-self
+
+Подравнява grid елемент в рамките на клетка по оста „inline“ (реда) – за разлика от `align-self`, който подравнява по оста „block“ (колоната). Тази стойност се прилага за grid елемент, разположен в единична клетка.
+
+Стойности:
+- **start** - Подравнява grid елемента плътно към началния ръб на клетката.
+- **end** - Подравнява grid елемента плътно към крайния ръб на клетката.
+- **center** - Подравнява grid елемента в центъра на клетката.
+- **stretch** - Запълва цялата ширина на клетката (това е настройката по подразбиране).
+
+```css
+.item {
+        justify-self: start | end | center | stretch;
+}
+```
+
+Пример
+```css
+.item-a {
+        justify-self: start;
+}
+```
+
+<img
+  src="https://css-tricks.com/wp-content/uploads/2018/11/justify-self-start.svg"
+  alt="grid justify-self"
+  width={600}
+  style={{ border: "1px solid #461364" }}
+/>
+
+#### align-self
+
+Подравнява grid елемент в рамките на клетка по оста на блока (колоната) – за разлика от `justify-self`, който подравнява по оста на реда (inline оста). Тази стойност се отнася за съдържанието вътре в самия grid елемент.
+
+Стойности:
+- **stretch (по подразбиране)** - Запълва цялата височина на клетката.
+- **start** - Подравнява grid елемента плътно към началния ръб на клетката.
+- **end** - Подравнява grid елемента плътно към крайния ръб на клетката.
+- **center** - Подравнява grid елемента в центъра на клетката.
+
+```css
+.item {
+        align-self: start | end | center | stretch;
+}
+```
+
+Пример
+```css
+.item-a {
+        align-self: start;
+}
+```
+
+<img
+  src="https://css-tricks.com/wp-content/uploads/2018/11/align-self-start.svg"
+  alt="grid align-self"
+  width={600}
+  style={{ border: "1px solid #461364" }}
+/>
+
+### Специални единици, стойности и функции
+
+#### fr единица
+
+Тази единица означава **част от оставащото пространство**. Така че декларация като:
+
+```css
+grid-template-columns: 1fr 3fr;
+```
+
+Най-общо казано, означава 25% и 75%. С тази разлика, че тези процентни стойности са много по-строго фиксирани от дробните единици (fractional units). Например, ако добавите padding към тези колони, дефинирани чрез проценти, ще надхвърлите общата ширина от 100% (приемайки box model от типа content-box). Освен това дробните единици се съчетават много по-удобно с други мерни единици, както лесно може да се предположи:
+
+```css
+grid-template-columns: 50px min-content 1fr;
+```
+
+#### Ключови думи
+
+Когато определяте размерите на редове и колони, можете да използвате всички познати мерни единици (като px, rem, % и т.н.), но разполагате и с ключови думи:
+
+- **min-content** - Минималният размер на съдържанието. Представете си текстов ред като „E pluribus unum“ – min-content вероятно съответства на ширината на думата „pluribus“.
+- **max-content** - Максималният размер на съдържанието. Ако вземем предвид горното изречение, max-content е дължината на цялото изречение.
+- **auto** - Тази ключова дума много прилича на единиците fr, с тази разлика, че при разпределянето на оставащото пространство те губят надпреварата за определяне на размера спрямо единиците fr.
+
+#### Функции за определяне на размера
+
+- **fit-content()** - Използва наличното пространство, но никога по-малко от min-content и никога повече от max-content.
+- **max()** - CSS функцията max() приема два или повече аргумента (стойности за размер), разделени със запетаи, изчислява ги и връща най-голямата стойност сред тях.
+- **min()** - CSS функцията min() приема два или повече аргумента (стойности за размер), разделени със запетаи, изчислява ги и връща най-малката стойност сред тях.
+- **minmax()** - CSS функцията minmax() се използва единствено с CSS Grid за дефиниране на диапазон от размери за grid елементите (т.е. редовете и колоните ѝ). Тя позволява задаването на два аргумента – минимален и максимален размер за даден grid елемент – като по този начин му дава възможност да се разширява и свива в рамките на този диапазон в зависимост от наличното пространство.
+
+#### Функцията repeat()
+
+Функцията repeat() може да ни спести време от писане.
+
+```css
+grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+
+/* easier: */
+grid-template-columns: repeat(8, 1fr);
+
+/* especially when: */
+grid-template-columns: repeat(8, minmax(10px, 1fr));
+```
+
+repeat() може да бъде използван в комбинация и с ключови думи:
+
+- **auto-fill** - Побира възможно най-много колони на един ред, дори ако са празни.
+- **auto-fit** - Побира наличните колони в наличното пространство, като дава предимство на разширяването на колоните за запълване на мястото пред добавянето на празни колони.
+
+---
+
+## Припокриване на елементи
+
+CSS позиционирането се отнася до управлението на разположението на елементите в уеб страница. Чрез CSS позиционирането можете да промените стандартния поток на документа.
+
+### position
+
+Свойството `position` определя типа на позициониране за даден елемент. Това свойство може да приема една от следните стойности:
+
+- **static** – Tова е стойността по подразбиране; елементът се позиционира според нормалния поток на документа.
+- **relative** – Eлементът се позиционира спрямо нормалната си позиция в потока на документа.
+- **fixed** – Eлементът се позиционира спрямо видимата област (viewport).
+- **absolute** – елементът се позиционира спрямо най-близкия позициониран родителски елемент.
+- **sticky** – елементът превключва между **относително (relative)** и **фиксирано (fixed)** позициониране в зависимост от позицията на скрола.
+
+След това елементите се разполагат на крайната си позиция чрез свойствата **top**, **bottom**, **left** и **right**.
+
+### position: static
+
+По подразбиране всички HTML елементи са позиционирани статично. Върху статично позиционираните елементи не оказват влияние свойствата **top**, **bottom**, **left** и **right**. **[[8]](https://www.w3schools.com/css/css_position.asp)**
+
+Елемент с `position: static;` винаги се позиционира според нормалния поток на страницата:
+
+---
+
+<HtmlPlayground code = {`
+<style>
+div.static {
+        position: static;
+        border: 3px solid #73AD21;
+}
+</style>
+
+<div class="static">
+        This div element has position: static;
+</div>
+`} />
+
+---
+
+### position: relative
+
+Елемент със свойство **position: relative;** се позиционира спрямо нормалната си позиция в потока на документа.
+
+Задаването на свойствата **top**, **right**, **bottom** и **left** води до изместване на елемента спрямо нормалната му позиция. Останалите елементи от съдържанието не се пренареждат, за да запълнят евентуалното празно място, оставено от елемента.
+
+---
+
+<HtmlPlayground code = {`
+<style>
+div.relative {
+        position: relative;
+        border: 3px solid #73AD21;
+        left: 30px;
+}
+</style>
+
+<div class="relative">
+        This div element has position: relative;
+</div>
+`} />
+
+---
+
+### position: fixed
+
+Елемент с **position: fixed;** се позиционира спрямо видимата област на екрана (viewport), което означава, че той винаги остава на едно и също място, дори когато страницата се скролва. Свойствата **top**, **right**, **bottom** и **left** се използват за определяне на крайното местоположение на елемента. **[[9]](https://www.w3schools.com/css/css_positioning_fixed_absolute.asp)**
+
+Фиксираният елемент не оставя празно място на страницата там, където обикновено би се намирал.
+
+:::warning
+Примерът с `position: fixed` не може да бъде показан в документацията, защото контейнерът излиза извън панела. За целта вижте **[оригиналния пример](https://www.w3schools.com/css/tryit.asp?filename=trycss_position_fixed)**.
+:::
+
+```css
+div.fixed {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        width: 300px;
+        border: 3px solid #73AD21;
+}
+```
+
+### position: absolute
+
+Елемент с **position: absolute;** се позиционира спрямо най-близкия си позициониран родителски елемент (такъв, чиято стойност на `position` е различна от **static**).
+
+Ако обаче елементът с абсолютно позициониране няма позиционирани родителски елементи, той се позиционира спрямо тялото на документа (`body`) и се премества при превъртане на страницата.
+
+:::note
+Елементите с абсолютно позициониране се изваждат от нормалния поток на документа и могат да се застъпват с други елементи.
+:::
+
+---
+
+<HtmlPlayground code = {`
+<style>
+div.relative {
+        position: relative;
+        width: 400px;
+        height: 200px;
+        border: 3px solid green;
+} 
+
+div.absolute {
+        position: absolute;
+        top: 80px;
+        right: 0;
+        width: 200px;
+        height: 100px;
+        border: 3px solid red;
+}
+</style>
+
+<div class="relative">This div element has position: relative;
+  <div class="absolute">This div element has position: absolute;</div>
+</div>
+`} />
+
+---
+
+### position: sticky
+
+Елемент със свойство **position: sticky;** превключва между относително (relative) и фиксирано (fixed) позициониране в зависимост от позицията на скролване. **[[10]](https://www.w3schools.com/css/css_positioning_sticky.asp)**
+
+**Лепкавият (sticky)** елемент се позиционира относително, докато не се достигне определена позиция на скролване – тогава той **залепва** на това място (подобно на **position: fixed**).
+
+:::note
+Трябва да зададете поне едно от свойствата **top**, **right**, **bottom** или **left**, за да работи позиционирането от тип **sticky**.
+:::
+
+---
+
+<HtmlPlayground code={`
+<style>
+div.sticky {
+        position: sticky;
+        top: 0;
+        padding: 5px;
+        background-color: #cae8ca;
+        border: 2px solid #4CAF50;
+}
+</style>
+
+<div class="sticky">I have position sticky!</div>
+
+<div style="padding-bottom:2000px">
+        <p>Scroll back up to remove the stickyness!</p>
+        <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
+        <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
+        <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
+</div>
+`}
+/>
+
+---
+
+## Поток на текста
+
+
+
+:::warning
+поток на текст - flow
+:::
