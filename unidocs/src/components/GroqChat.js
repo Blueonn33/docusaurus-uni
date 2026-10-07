@@ -101,7 +101,7 @@ export default function GroqChat({ groqKey }) {
           position: "fixed",
           bottom: "25px",
           right: "25px",
-          background: "#6d28d9",
+          background: "#53a2c9",
           color: "white",
           borderRadius: "50%",
           width: "70px",
@@ -163,7 +163,7 @@ export default function GroqChat({ groqKey }) {
           {/* Header */}
           <div
             style={{
-              background: "#6d28d9",
+              background: "#53a2c9",
               color: "white",
               padding: "18px 20px",
               fontWeight: "bold",
@@ -355,7 +355,7 @@ export default function GroqChat({ groqKey }) {
               onClick={sendMessage}
               disabled={loading || !input.trim()}
               style={{
-                background: loading || !input.trim() ? "#a78bfa" : "#6d28d9",
+                background: loading || !input.trim() ? "#6CC8F5" : "#53a2c9",
 
                 color: "white",
                 border: "none",

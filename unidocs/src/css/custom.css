@@ -6,7 +6,7 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #2e8555;
+  --ifm-color-primary: #72ACF8;
   --ifm-color-primary-dark: #29784c;
   --ifm-color-primary-darker: #277148;
   --ifm-color-primary-darkest: #205d3b;
@@ -25,7 +25,8 @@ body {
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
+  /* 72ACF8 */
+  --ifm-color-primary: #58ACD5;
   --ifm-color-primary-dark: #21af90;
   --ifm-color-primary-darker: #1fa588;
   --ifm-color-primary-darkest: #1a8870;
@@ -36,7 +37,7 @@ body {
 }
 
 .navbar, .footer {
-  background-color: #431264 !important;
+  background-color: #4381A0 !important;
 }
 
 .navbar__item, .theme-layout-navbar-right{
@@ -44,14 +45,14 @@ body {
 }
 
 .navbar__title {
-  color: #d9b3ff;
+  color: white;
 }
 
 .navbar__title:hover, 
 .navbar__item:hover, 
 .theme-layout-navbar-right:hover,
 .footer__link-item:hover {
-  color: #d9b3ff;
+  color: #80AABF;
 }
 
 [data-theme='light'] .DocSearch {
