@@ -399,7 +399,7 @@ table, th, td {
 
 ### Размери на таблицата
 
-CSS свойството `width` се използва за задаване на ширината на таблица.
+CSS свойството `width` се използва за задаване на ширината на таблица. **[[3]](https://www.w3schools.com/Css/css_table_size.asp)**
 Ширината може да се зададе:
 
 - В проценти (%).
@@ -442,9 +442,193 @@ th {
 
 ---
 
+### Подравняване на елементите
+
+CSS свойството `text-align` се използва за задаване на хоризонталното подравняване на съдържанието в елементи `<th>` или `<td>`. **[[4]](https://www.w3schools.com/Css/css_table_align.asp)**
+Това свойство може да приема една от следните стойности:
+
+- **left** – Подравнява текста вляво.
+- **right** – Подравнява текста вдясно.
+- **center** – Центрира текста.
+
+:::note
+По подразбиране съдържанието на елементите `<th>` е центрирано, а съдържанието на елементите `<td>` е подравнено вляво.
+:::
+
+---
+
+<HtmlPlayground code = {`
+<style>
+table, th, td {
+        border: 1px solid red;
+}
+table {
+        width: 100%;
+}
+td {
+        text-align: center;
+}
+</style>
+
+<table>
+        <tr>
+            <th>Име</th>
+            <th>Възраст</th>
+        </tr>
+        <tr>
+            <td>Мартин Маринов</td>
+            <td>21</td>
+        </tr>
+</table>
+`} />
+
+---
+
+CSS свойството `vertical-align` задава вертикалното подравняване на съдържанието в елементи `<th>` или `<td>`.
+
+- **top** – Подравнява текста горе.
+- **bottom** – Подравнява текста долу.
+- **center** – Центрира текста.
+
+:::note
+По подразбиране вертикалното подравняване на съдържанието в таблица е по средата (както за `<th>`, така и за `<td>` елементите).
+:::
+
+---
+
+<HtmlPlayground code = {`
+<style>
+table, th, td {
+        border: 1px solid red;
+}
+table {
+        width: 100%;
+}
+td {
+        height: 70px;
+        vertical-align: bottom;
+}
+</style>
+
+<table>
+        <tr>
+            <th>Име</th>
+            <th>Възраст</th>
+        </tr>
+        <tr>
+            <td>Мартин Маринов</td>
+            <td>21</td>
+        </tr>
+</table>
+`} />
+
+---
+
+### Прилагане на декорации
+
+За да създадете разделители за таблица, добавете свойството **border-[value]** към елементите `<th>` и `<td>`, където **value** приема една от следните стойности **[[5]](https://www.w3schools.com/Css/css_table_style.asp)**:
+
+- **top**
+- **bottom**
+- **left**
+- **right**
+
+---
+
+<HtmlPlayground code = {`
+<style>
+table {
+        width: 100%;
+}
+th, td {
+        border-bottom: 1px solid #ddd;
+}
+</style>
+
+<table>
+        <tr>
+            <th>Име</th>
+            <th>Възраст</th>
+        </tr>
+        <tr>
+            <td>Мартин Маринов</td>
+            <td>21</td>
+        </tr>
+</table>
+`} />
+
+---
+
+Използвайте CSS селектора **:hover** върху `<tr>`, за да подчертаете редовете на таблицата при посочване с мишката
+
+---
+
+<HtmlPlayground code = {`
+<style>
+table {
+        width: 100%;
+}
+tr:hover {
+        background-color: coral;
+}
+</style>
+
+<table>
+        <tr>
+            <th>Име</th>
+            <th>Възраст</th>
+        </tr>
+        <tr>
+            <td>Мартин Маринов</td>
+            <td>21</td>
+        </tr>
+</table>
+`} />
+
+---
+
+За таблици с редуващи се цветове на редовете (тип „зебра“) използвайте селектора `nth-child()` и задайте цвят на фона за всички четни (или нечетни) редове на таблицата
+
+---
+
+<HtmlPlayground code = {`
+<style>
+table {
+        width: 100%;
+}
+tr:nth-child(even) {
+        background-color: coral;
+}
+</style>
+
+<table>
+        <tr>
+            <th>Име</th>
+            <th>Възраст</th>
+        </tr>
+        <tr>
+            <td>Мартин Маринов</td>
+            <td>21</td>
+        </tr>
+        <tr>
+            <td>Рая Петкова</td>
+            <td>19</td>
+        </tr>
+        <tr>
+            <td>Михаил Иванов</td>
+            <td>23</td>
+        </tr>
+</table>
+`} />
+
+---
+
 ---
 
 ## Използвана литература
 
 - ### [W3Schools styling lists](https://www.w3schools.com/CSS/css_list.asp)
-- ### [W3Schools styling tables](https://www.w3schools.com/Css/css_table.asp)
+- ### [W3Schools styling tables - borders](https://www.w3schools.com/Css/css_table.asp)
+- ### [W3Schools styling tables - sizing](https://www.w3schools.com/Css/css_table_size.asp)
+- ### [W3Schools styling tables - alignment](https://www.w3schools.com/Css/css_table_align.asp)
+- ### [W3Schools styling tables - decorations](https://www.w3schools.com/Css/css_table_style.asp)
