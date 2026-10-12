@@ -1,9 +1,8 @@
 {
-  "label": "Примери",
+  "label": "Ресурси",
   "position": 4,
   "link": {
-    "type": "generated-index",
-    "title": "Примери за всяка тема",
-    "description": "Бутоните служат за навигация."
+   "type": "doc",
+    "id": "intro"
   }
 }
