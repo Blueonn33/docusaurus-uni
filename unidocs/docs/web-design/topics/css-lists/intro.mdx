@@ -1,0 +1,234 @@
+import HtmlPlayground from "@site/src/components/HtmlPlayground";
+
+# Стилове за списъци, таблици и навигация
+
+## Стилизиране на списъци
+
+В HTML съществуват два основни типа списъци:
+
+- `<ul>` (unordered list) - Неподредени списъци. Елементите на списъка се отбелязват със символи.
+- `<ol>` (ordered list) – Подредени списъци. Елементите на списъка се отбелязват с цифри или букви. **[[1]](https://www.w3schools.com/CSS/css_list.asp)**
+
+CSS разполага със следните свойства за стилизиране на HTML списъци:
+
+- `list-style-type` – Определя вида на маркера за елементите на списъка.
+- `list-style-image` – Задава изображение като маркер за елементите на списъка.
+- `list-style-position` – Определя позицията на маркерите за елементите на списъка.
+- `list-style` – Съкратено свойство за горепосочените свойства.
+
+### list-style-type
+
+CSS свойството `list-style-type` определя вида на маркера за елементите в списък. 
+Ето някои от наличните маркери за елементи на списък:
+
+```css
+ul {
+        list-style-type: circle;
+}
+ul {
+        list-style-type: disc;
+}
+ul {
+        list-style-type: square;
+}
+
+ol {
+        list-style-type: upper-roman;
+}
+ol {
+        list-style-type: lower-roman;
+}
+ol {
+        list-style-type: lower-alpha;
+}
+ol {
+        list-style-type: decimal;
+}
+```
+
+---
+
+<HtmlPlayground code = {`
+<style>
+ul {
+        list-style-type: circle;
+}
+</style>
+
+<ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+</ul>
+`} />
+
+---
+
+### list-style-image
+
+CSS свойството `list-style-image` се използва за замяна на маркера на елемента от списъка с изображение.
+
+:::warning
+Винаги задавайте и свойството `list-style-type`. То се използва, ако изображението по някаква причина не е достъпно.
+:::
+
+---
+
+<HtmlPlayground code = {`
+<style>
+ul {
+        list-style-type: circle;
+        list-style-image: url("/img/bat.png");
+}
+</style>
+
+<ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+</ul>
+`} />
+
+---
+
+:::info
+Препоръчително е изображението да не бъде с големи размери
+:::
+
+### list-style-position
+
+CSS свойството `list-style-position` определя позицията на маркерите на елементите в списъка (булетите).
+
+- `list-style-position: outside` - Означава, че маркерите ще бъдат разположени извън самия елемент на списъка. Началото на всеки ред от елемента на списъка ще бъде подравнено вертикално. Това е настройката по подразбиране:
+
+---
+
+<HtmlPlayground code = {`
+<style>
+ul {
+        list-style-position: outside;
+}
+</style>
+
+<ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+</ul>
+`} />
+
+---
+
+- `list-style-position: inside` - Означава, че маркерите ще се намират вътре в елемента на списъка. Тъй като са част от самия елемент, те ще бъдат част от текста и ще го изместят в началото:
+
+---
+
+<HtmlPlayground code = {`
+<style>
+ul {
+        list-style-position: inside;
+}
+</style>
+
+<ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+</ul>
+`} />
+
+---
+
+### Премахване на маркерите
+
+Свойството `list-style-type: none` се използва за премахване на маркерите на елементите в списъка.
+
+:::note
+Списъкът има зададени по подразбиране външен отстъп (margin) и вътрешен отстъп (padding). За да ги премахнете, добавете `margin: 0` и `padding: 0` към елемента `<ul>` или `<ol>`
+:::
+
+---
+
+<HtmlPlayground code = {`
+<style>
+ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+}
+</style>
+
+<ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+</ul>
+`} />
+
+---
+
+### list-style
+
+`list-style` е съкратено свойство (shorthand property). То се използва за задаване на всички свойства, свързани със списъци, в рамките на една декларация.
+
+При използването на това съкратено свойство редът на стойностите е следният:
+
+- **list-style-type**
+- **list-style-position**
+- **list-style-image**
+
+Ако някоя от посочените стойности липсва, се прилага стойността по подразбиране за съответното свойство.
+
+```css
+ul {
+        list-style: square inside url("sqpurple.gif");
+}
+```
+
+### Стилизиране с цветове
+
+Можем също така да стилизираме списъците с цветове и отстъпи, за да изглеждат по-интересно.
+
+Всичко, добавено към тага `<ol>` или `<ul>`, засяга целия списък, докато свойствата, добавени към тага `<li>`, ще се отнасят за отделните елементи на списъка:
+
+<HtmlPlayground code = {`
+<style>
+ol {
+        background: salmon;
+        padding: 20px;
+}
+ol li {
+        background: mistyrose;
+        color: darkred;
+        padding: 10px;
+        margin-left: 20px;
+}
+ul {
+        background: powderblue;
+        padding: 20px;
+}
+ul li {
+        background: mistyrose;
+        color: darkblue;
+        margin: 5px;
+}
+</style>
+
+<ol>
+        <li>Coffee</li>
+        <li>Tea</li>
+        <li>Coca Cola</li>
+</ol>
+
+<ul>
+        <li>Coffee</li>
+        <li>Tea</li>
+        <li>Coca Cola</li>
+</ul>
+`} />
+
+---
+
+## Използвана литература
+
+- ### [W3Schools styling lists](https://www.w3schools.com/CSS/css_list.asp)
