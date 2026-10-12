@@ -627,6 +627,133 @@ tr:nth-child(even) {
 
 ---
 
+## Стилизиране на навигацията
+
+Навигационните ленти помагат на потребителите лесно да се придвижват между различните секции на уебсайта. **[[6]](https://www.w3schools.com/Css/css_navbar.asp)**
+
+Обикновено навигационните ленти се изграждат с помощта на HTML елементи за списъци (`<ul>` и `<li>`), след което се оформят със CSS за постигане на добър външен вид.
+
+Навигационната лента по същество представлява списък от връзки, така че използването на HTML елементите `<ul>` и `<li>` е напълно логично.
+
+```html
+<ul>
+        <li><a href="default.asp">Home</a></li>
+        <li><a href="news.asp">News</a></li>
+        <li><a href="contact.asp">Contact</a></li>
+        <li><a href="about.asp">About</a></li>
+</ul>
+```
+
+След това премахваме отстъпите и маркерите.
+
+```css
+ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+}
+```
+
+---
+
+<HtmlPlayground code = {`
+<style>
+ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+}
+</style>
+
+<ul>
+        <li><a href="default.asp">Home</a></li>
+        <li><a href="news.asp">News</a></li>
+        <li><a href="contact.asp">Contact</a></li>
+        <li><a href="about.asp">About</a></li>
+</ul>
+`} />
+
+---
+
+При вертикалната лента за навигация връзките са подредени една под друга и обикновено са подравнени спрямо лявата или дясната страна на уебстраницата. **[[7]](https://www.w3schools.com/Css/css_navbar_vertical.asp)**
+
+В основата на вертикалната лента за навигация стои `<ul>` с елементи `<li>`, като всеки от тях съдържа връзка `<a>`.
+
+#### Вертикална навигация със стилове
+
+<HtmlPlayground code = {`
+<style>
+ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        width: 200px;
+        background-color: #f1f1f1;
+}
+li a {
+        display: block;
+        color: black;
+        padding: 8px 16px;
+        text-decoration: none;
+}
+li a:hover {
+        background-color: #555555;
+        color: white;
+}
+</style>
+
+<ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#news">News</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#about">About</a></li>
+</ul>
+`} />
+
+---
+
+При хоризонталната навигационна лента връзките са подредени хоризонтално (една до друга) и обикновено са разположени в горната част на уебстраницата. **[[8]](https://www.w3schools.com/Css/css_navbar_horizontal.asp)**
+
+Често се добавя и елемент `<nav>` около елемента `<ul>`, който служи като контейнер за навигационната лента.
+
+#### Хоризонтална навигация със стилове
+
+<HtmlPlayground code = {`
+<style>
+body {
+        margin: 0;
+        padding: 0;
+}
+ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333333;
+}
+ul li {
+        float: left;
+}
+ul li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+}
+ul li a:hover {
+        background-color: #111111;
+}
+</style>
+
+<ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#news">News</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#about">About</a></li>
+</ul>
+`} />
+
 ---
 
 ## Използвана литература
@@ -636,3 +763,6 @@ tr:nth-child(even) {
 - ### [W3Schools styling tables - sizing](https://www.w3schools.com/Css/css_table_size.asp)
 - ### [W3Schools styling tables - alignment](https://www.w3schools.com/Css/css_table_align.asp)
 - ### [W3Schools styling tables - decorations](https://www.w3schools.com/Css/css_table_style.asp)
+- ### [W3Schools styling navs](https://www.w3schools.com/Css/css_navbar.asp)
+- ### [W3Schools styling navs - vertical nav](https://www.w3schools.com/Css/css_navbar_vertical.asp)
+- ### [W3Schools styling navs - horizontal nav](https://www.w3schools.com/Css/css_navbar_horizontal.asp)
