@@ -5,7 +5,6 @@ export default function HtmlEditor() {
 
   return (
     <div style={{ width: "100%", marginTop: "2rem" }}>
-      
       {/* EDITOR */}
       <div style={{ width: "100%", marginBottom: "1.5rem" }}>
         <h3>Editor</h3>
